@@ -5,7 +5,7 @@ import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.time.LocalDate;
 import javax.swing.JOptionPane;
-import universidadulp.Conexion.Conexion;
+import universidadulp.accesoADatos.Conexion;
 
 
 public class Alumno {
@@ -75,7 +75,7 @@ public class Alumno {
 
     @Override
     public String toString() {
-        return "Alumno{" + "idAlumno=" + idAlumno + ", apellido=" + apellido + ", nombre=" + nombre + ", fechaNacimiento=" + fechaNacimiento + ", activo=" + activo + '}';
+        return apellido + ", " + nombre + " - " + idAlumno;
     }
 
     
