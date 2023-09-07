@@ -1,4 +1,4 @@
-package universidadulp.Conexion;
+package universidadulp.accesoADatos;
 
 import java.sql.*;
 import java.util.logging.Level;

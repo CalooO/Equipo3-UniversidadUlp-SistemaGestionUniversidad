@@ -5,7 +5,7 @@ import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.time.LocalDate;
 import javax.swing.JOptionPane;
-import universidadulp.Conexion.Conexion;
+import universidadulp.accesoADatos.Conexion;
 
 
 public class Alumno {
