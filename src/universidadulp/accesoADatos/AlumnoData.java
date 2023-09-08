@@ -139,7 +139,7 @@ public class AlumnoData {
         
     }
      
-      public List<Alumno> listarAlumnos ({
+      public List<Alumno> listarAlumnos (){
         String sql="select idAlumno, dni, apellido, nombre fechaNacimiento from alumno where estado=";
         ArrayList<Alumno> listaAlumnos=new ArrayList<>();
         try {
