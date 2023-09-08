@@ -85,7 +85,7 @@ public class AlumnoData {
          
     }
     
-    public void buscarAlumnoPorId(int id){
+    public Alumno buscarAlumnoPorId(int id){
         String sql="select dni, apellido, nombre fechaNacimiento from alumno where id=? and estado=";
         Alumno alumno=null;
         try {
@@ -109,10 +109,10 @@ public class AlumnoData {
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null,"Error al acceder a la tabla alumno "+ex.getMessage());
         }
-        
+        return alumno;
     }
     
-     public void buscarAlumnoPorDni(int dni){
+     public Alumno buscarAlumnoPorDni(int dni){
         String sql="select idAlumno, dni, apellido, nombre fechaNacimiento from alumno where dni=? and estado=";
         Alumno alumno=null;
         try {
@@ -137,6 +137,7 @@ public class AlumnoData {
             JOptionPane.showMessageDialog(null,"Error al acceder a la tabla alumno "+ex.getMessage());
         }
         
+        return alumno;
     }
      
       public List<Alumno> listarAlumnos (){
