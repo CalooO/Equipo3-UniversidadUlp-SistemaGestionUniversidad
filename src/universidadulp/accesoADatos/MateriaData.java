@@ -131,7 +131,7 @@ public class MateriaData {
         }
     }
     
-    public ArrayList<Materia> listerMateria(){
+    public ArrayList<Materia> listarMaterias(){
         
         ArrayList<Materia> materias = new ArrayList<>();
         
