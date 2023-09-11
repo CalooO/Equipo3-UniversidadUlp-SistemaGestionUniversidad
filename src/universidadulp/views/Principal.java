@@ -33,7 +33,7 @@ public class Principal extends javax.swing.JFrame {
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         jmFormAlumno = new javax.swing.JMenuItem();
-        jMenu2 = new javax.swing.JMenu();
+        jmFormularioMateria = new javax.swing.JMenu();
         jmFormMateria = new javax.swing.JMenuItem();
         jmManejoInscripciones = new javax.swing.JMenu();
         jmManejoInscripcion = new javax.swing.JMenuItem();
@@ -67,12 +67,22 @@ public class Principal extends javax.swing.JFrame {
 
         jMenuBar1.add(jMenu1);
 
-        jMenu2.setText("Materia");
+        jmFormularioMateria.setText("Materia");
+        jmFormularioMateria.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jmFormularioMateriaActionPerformed(evt);
+            }
+        });
 
         jmFormMateria.setText("Formulario de Materia");
-        jMenu2.add(jmFormMateria);
+        jmFormMateria.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jmFormMateriaActionPerformed(evt);
+            }
+        });
+        jmFormularioMateria.add(jmFormMateria);
 
-        jMenuBar1.add(jMenu2);
+        jMenuBar1.add(jmFormularioMateria);
 
         jmManejoInscripciones.setText("Administración");
 
@@ -145,6 +155,20 @@ public class Principal extends javax.swing.JFrame {
         jdpMain.moveToFront(iview);
     }//GEN-LAST:event_jmManejoInscripcionActionPerformed
 
+    private void jmFormularioMateriaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmFormularioMateriaActionPerformed
+        //IGNOREN ESTE METODO
+    }//GEN-LAST:event_jmFormularioMateriaActionPerformed
+
+    private void jmFormMateriaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmFormMateriaActionPerformed
+        // TODO add your handling code here:
+        jdpMain.removeAll();
+        jdpMain.repaint();
+        GestionMaterias gM = new GestionMaterias();
+        gM.setVisible(true);
+        jdpMain.add(gM);
+        jdpMain.moveToFront(gM);
+    }//GEN-LAST:event_jmFormMateriaActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -182,12 +206,12 @@ public class Principal extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenu jMenu1;
-    private javax.swing.JMenu jMenu2;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JDesktopPane jdpMain;
     private javax.swing.JMenuItem jmAlumnoxMateria;
     private javax.swing.JMenuItem jmFormAlumno;
     private javax.swing.JMenuItem jmFormMateria;
+    private javax.swing.JMenu jmFormularioMateria;
     private javax.swing.JMenuItem jmManejoInscripcion;
     private javax.swing.JMenu jmManejoInscripciones;
     private javax.swing.JMenuItem jmManipNotas;
