@@ -23,7 +23,7 @@ public class MateriaData {
     
     public void guardarMateria(Materia materia){
         
-        String sql = "insert into materia (nombre,año,estado)"
+        String sql = "insert into materia (nombre,año,estado) "
                 + "values (?,?,?)";
         
         try {
@@ -87,7 +87,7 @@ public class MateriaData {
     
     public void modificarMateria(Materia materia){
         
-        String sql = "update materia set nombre=?,año=?,estado=?"
+        String sql = "update materia set nombre=?,año=?,estado=? "
                 + "where idMateria=?";
         try {
             PreparedStatement ps=con.prepareStatement(sql);
@@ -111,7 +111,7 @@ public class MateriaData {
     public void eliminarMateria(int id){
         
         try {
-            String sql = "update materia set estado = 0"
+            String sql = "update materia set estado = 0 "
                 + "where idMateria = ?";
             
             PreparedStatement ps = con.prepareStatement(sql);
