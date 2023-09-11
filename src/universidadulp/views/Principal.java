@@ -156,8 +156,7 @@ public class Principal extends javax.swing.JFrame {
     }//GEN-LAST:event_jmManejoInscripcionActionPerformed
 
     private void jmFormularioMateriaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmFormularioMateriaActionPerformed
-        
-        
+        //IGNOREN ESTE METODO
     }//GEN-LAST:event_jmFormularioMateriaActionPerformed
 
     private void jmFormMateriaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmFormMateriaActionPerformed
