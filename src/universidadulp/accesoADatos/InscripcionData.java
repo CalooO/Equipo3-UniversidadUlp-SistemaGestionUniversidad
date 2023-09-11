@@ -113,7 +113,7 @@ public class InscripcionData {
     }
 
     public List<Materia> obtenerMateriasCursadas(int id) {
-        String sql = "SELECT i.idMateria, nombre, año FROM inscripción i JOIN materia m"
+        String sql = "SELECT i.idMateria, nombre, año FROM inscripcion i JOIN materia m "
                 + "ON(i.idMateria=m.idMateria) WHERE i.idAlumno = ? and m.estado=1";
         ArrayList<Materia> listaMaterias = new ArrayList<>();
 
@@ -139,8 +139,8 @@ public class InscripcionData {
     }
 
     public List<Materia> obtenerMateriasNOCursadas(int id) {
-        String sql = "SELECT m.idMateria, nombre, año FROM inscripción i JOIN materia m"
-                + "ON(i.idMateria=m.idMateria) WHERE not i.idAlumno = ? and m.estado=1";
+        String sql = "SELECT m.idMateria, m.nombre, m.año FROM materia m WHERE m.idMateria "
+                + "NOT IN ( SELECT i.idMateria FROM inscripcion i WHERE i.idAlumno = ? )";
         ArrayList<Materia> listaMaterias = new ArrayList<>();
 
         try {
