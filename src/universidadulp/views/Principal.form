@@ -9,14 +9,6 @@
             <Property name="text" type="java.lang.String" value="Alumno"/>
           </Properties>
           <SubComponents>
-            <Menu class="javax.swing.JMenu" name="jmFormAlumn">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="Formulario de Alumno"/>
-              </Properties>
-              <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jmFormAlumnActionPerformed"/>
-              </Events>
-            </Menu>
             <MenuItem class="javax.swing.JMenuItem" name="jmFormAlumno">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Formulario de Alumno"/>
@@ -32,11 +24,11 @@
             <Property name="text" type="java.lang.String" value="Materia"/>
           </Properties>
           <SubComponents>
-            <Menu class="javax.swing.JMenu" name="jmFormMateria">
+            <MenuItem class="javax.swing.JMenuItem" name="jmFormMateria">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Formulario de Materia"/>
               </Properties>
-            </Menu>
+            </MenuItem>
           </SubComponents>
         </Menu>
         <Menu class="javax.swing.JMenu" name="jMenu4">
@@ -44,28 +36,28 @@
             <Property name="text" type="java.lang.String" value="Administraci&#xf3;n"/>
           </Properties>
           <SubComponents>
-            <Menu class="javax.swing.JMenu" name="jmManejoInscripcion">
+            <MenuItem class="javax.swing.JMenuItem" name="jmManejoInscripcion">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Manejo de Inscripciones"/>
               </Properties>
-            </Menu>
-            <Menu class="javax.swing.JMenu" name="jmManipNotas">
+            </MenuItem>
+            <MenuItem class="javax.swing.JMenuItem" name="jmManipNotas">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Manipulacion de notas"/>
               </Properties>
-            </Menu>
+            </MenuItem>
           </SubComponents>
         </Menu>
-        <Menu class="javax.swing.JMenu" name="jmAlumnoxMateria">
+        <Menu class="javax.swing.JMenu" name="sd">
           <Properties>
             <Property name="text" type="java.lang.String" value="Consultas"/>
           </Properties>
           <SubComponents>
-            <Menu class="javax.swing.JMenu" name="jMenu10">
+            <MenuItem class="javax.swing.JMenuItem" name="jmAlumnoxMateria">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Alumnos por materia"/>
               </Properties>
-            </Menu>
+            </MenuItem>
           </SubComponents>
         </Menu>
         <Menu class="javax.swing.JMenu" name="jmSalir">
@@ -120,12 +112,12 @@
       <Layout>
         <DimensionLayout dim="0">
           <Group type="103" groupAlignment="0" attributes="0">
-              <EmptySpace min="0" pref="800" max="32767" attributes="0"/>
+              <EmptySpace min="0" pref="850" max="32767" attributes="0"/>
           </Group>
         </DimensionLayout>
         <DimensionLayout dim="1">
           <Group type="103" groupAlignment="0" attributes="0">
-              <EmptySpace min="0" pref="577" max="32767" attributes="0"/>
+              <EmptySpace min="0" pref="827" max="32767" attributes="0"/>
           </Group>
         </DimensionLayout>
       </Layout>
