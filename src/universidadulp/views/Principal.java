@@ -4,6 +4,8 @@
  */
 package universidadulp.views;
 
+import universidadulp.Views.InscripcionesView;
+
 /**
  *
  * @author Kaniory
@@ -33,7 +35,7 @@ public class Principal extends javax.swing.JFrame {
         jmFormAlumno = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
         jmFormMateria = new javax.swing.JMenuItem();
-        jMenu4 = new javax.swing.JMenu();
+        jmManejoInscripciones = new javax.swing.JMenu();
         jmManejoInscripcion = new javax.swing.JMenuItem();
         jmManipNotas = new javax.swing.JMenuItem();
         sd = new javax.swing.JMenu();
@@ -41,7 +43,6 @@ public class Principal extends javax.swing.JFrame {
         jmSalir = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setPreferredSize(new java.awt.Dimension(850, 850));
 
         javax.swing.GroupLayout jdpMainLayout = new javax.swing.GroupLayout(jdpMain);
         jdpMain.setLayout(jdpMainLayout);
@@ -73,15 +74,20 @@ public class Principal extends javax.swing.JFrame {
 
         jMenuBar1.add(jMenu2);
 
-        jMenu4.setText("Administración");
+        jmManejoInscripciones.setText("Administración");
 
         jmManejoInscripcion.setText("Manejo de Inscripciones");
-        jMenu4.add(jmManejoInscripcion);
+        jmManejoInscripcion.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jmManejoInscripcionActionPerformed(evt);
+            }
+        });
+        jmManejoInscripciones.add(jmManejoInscripcion);
 
         jmManipNotas.setText("Manipulacion de notas");
-        jMenu4.add(jmManipNotas);
+        jmManejoInscripciones.add(jmManipNotas);
 
-        jMenuBar1.add(jMenu4);
+        jMenuBar1.add(jmManejoInscripciones);
 
         sd.setText("Consultas");
 
@@ -129,6 +135,16 @@ public class Principal extends javax.swing.JFrame {
         jdpMain.moveToFront(p);
     }//GEN-LAST:event_jmFormAlumnoActionPerformed
 
+    private void jmManejoInscripcionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmManejoInscripcionActionPerformed
+        // TODO add your handling code here:
+        jdpMain.removeAll();
+        jdpMain.repaint();
+        InscripcionesView iview = new InscripcionesView();
+        iview.setVisible(true);
+        jdpMain.add(iview);
+        jdpMain.moveToFront(iview);
+    }//GEN-LAST:event_jmManejoInscripcionActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -167,13 +183,13 @@ public class Principal extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
-    private javax.swing.JMenu jMenu4;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JDesktopPane jdpMain;
     private javax.swing.JMenuItem jmAlumnoxMateria;
     private javax.swing.JMenuItem jmFormAlumno;
     private javax.swing.JMenuItem jmFormMateria;
     private javax.swing.JMenuItem jmManejoInscripcion;
+    private javax.swing.JMenu jmManejoInscripciones;
     private javax.swing.JMenuItem jmManipNotas;
     private javax.swing.JMenu jmSalir;
     private javax.swing.JMenu sd;

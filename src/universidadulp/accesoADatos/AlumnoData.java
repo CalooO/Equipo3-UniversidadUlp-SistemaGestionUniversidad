@@ -22,7 +22,7 @@ public class AlumnoData {
     }
     
     public void guardarAlumno(Alumno alumno){
-        String sql="Insert into alumno (dni, apellido, nombre, fechaNacimiento, estado)"
+        String sql="Insert into alumno (dni, apellido, nombre, fechaNac, estado)"
                 + "Values (?,?,?,?,?)";
         try {
             PreparedStatement ps=con.prepareStatement(sql,Statement.RETURN_GENERATED_KEYS);
@@ -47,7 +47,7 @@ public class AlumnoData {
     }
     
     public void modificarAlumno(Alumno alumno){
-        String sql="Update alumno set dni=?, apellido=?, nombre=?, fechaNacimiento=?"
+        String sql="Update alumno set dni=?, apellido=?, nombre=?, fechaNac=?"
                 + "where idAlumno=?";
         try {
             PreparedStatement ps=con.prepareStatement(sql);
@@ -86,7 +86,7 @@ public class AlumnoData {
     }
     
     public Alumno buscarAlumnoPorId(int id){
-        String sql="select dni, apellido, nombre fechaNacimiento from alumno where id=? and estado=";
+        String sql="select dni, apellido, nombre fechaNac from alumno where id=? and estado=";
         Alumno alumno=null;
         try {
             PreparedStatement ps=con.prepareStatement(sql);
@@ -98,7 +98,7 @@ public class AlumnoData {
                 alumno.setDni(rs.getInt("dni"));
                 alumno.setApellido(rs.getString("apellido"));
                 alumno.setNombre(rs.getString("nombre"));
-                alumno.setFechaNacimiento(rs.getDate("fechaNacimiento").toLocalDate());
+                alumno.setFechaNacimiento(rs.getDate("fechaNac").toLocalDate());
                 alumno.setActivo(true);
                 
             }else{
@@ -113,7 +113,7 @@ public class AlumnoData {
     }
     
      public Alumno buscarAlumnoPorDni(int dni){
-        String sql="select idAlumno, dni, apellido, nombre fechaNacimiento from alumno where dni=? and estado=";
+        String sql="select idAlumno, dni, apellido, nombre fechaNac from alumno where dni=? and estado=";
         Alumno alumno=null;
         try {
             PreparedStatement ps=con.prepareStatement(sql);
@@ -125,7 +125,7 @@ public class AlumnoData {
                 alumno.setDni(dni);
                 alumno.setApellido(rs.getString("apellido"));
                 alumno.setNombre(rs.getString("nombre"));
-                alumno.setFechaNacimiento(rs.getDate("fechaNacimiento").toLocalDate());
+                alumno.setFechaNacimiento(rs.getDate("fechaNac").toLocalDate());
                 alumno.setActivo(true);
                 
             }else{
@@ -140,8 +140,8 @@ public class AlumnoData {
         return alumno;
     }
      
-      public List<Alumno> listarAlumnos (){
-        String sql="select idAlumno, dni, apellido, nombre fechaNacimiento from alumno where estado=";
+      public ArrayList<Alumno> listarAlumnos (){
+        String sql="select idAlumno, dni, apellido, nombre, fechaNac from alumno where estado=1";
         ArrayList<Alumno> listaAlumnos=new ArrayList<>();
         try {
             PreparedStatement ps=con.prepareStatement(sql);
@@ -153,7 +153,7 @@ public class AlumnoData {
                 alumno.setDni(rs.getInt("dni"));
                 alumno.setApellido(rs.getString("apellido"));
                 alumno.setNombre(rs.getString("nombre"));
-                alumno.setFechaNacimiento(rs.getDate("fechaNacimiento").toLocalDate());
+                alumno.setFechaNacimiento(rs.getDate("fechaNac").toLocalDate());
                 alumno.setActivo(true);
                 listaAlumnos.add(alumno);
            }

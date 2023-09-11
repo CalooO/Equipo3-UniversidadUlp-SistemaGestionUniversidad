@@ -31,7 +31,7 @@
             </MenuItem>
           </SubComponents>
         </Menu>
-        <Menu class="javax.swing.JMenu" name="jMenu4">
+        <Menu class="javax.swing.JMenu" name="jmManejoInscripciones">
           <Properties>
             <Property name="text" type="java.lang.String" value="Administraci&#xf3;n"/>
           </Properties>
@@ -40,6 +40,9 @@
               <Properties>
                 <Property name="text" type="java.lang.String" value="Manejo de Inscripciones"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jmManejoInscripcionActionPerformed"/>
+              </Events>
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="jmManipNotas">
               <Properties>
@@ -73,9 +76,6 @@
   </NonVisualComponents>
   <Properties>
     <Property name="defaultCloseOperation" type="int" value="3"/>
-    <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-      <Dimension value="[850, 850]"/>
-    </Property>
   </Properties>
   <SyntheticProperties>
     <SyntheticProperty name="menuBar" type="java.lang.String" value="jMenuBar1"/>
