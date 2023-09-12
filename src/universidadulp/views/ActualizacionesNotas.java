@@ -7,6 +7,7 @@ package universidadulp.views;
 
 import java.util.ArrayList;
 import java.util.List;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import universidadulp.Entidades.*;
 import universidadulp.accesoADatos.AlumnoData;
@@ -23,7 +24,7 @@ public class ActualizacionesNotas extends javax.swing.JInternalFrame {
      */
      private DefaultTableModel modelo = new DefaultTableModel() {
         public boolean isCellEditable(int f, int c) {
-            return false;
+            return true;
         }
     };
     private void armarCabecera() {
@@ -45,20 +46,47 @@ public class ActualizacionesNotas extends javax.swing.JInternalFrame {
     
     private void mostrarNotas(){
         InscripcionData ins = new InscripcionData();
-        jtComboBoxAct.getSelectedItem();
         int id = jtComboBoxAct.getItemAt(jtComboBoxAct.getSelectedIndex()).getIdAlumno();
         List<Materia> listaMateria = ins.obtenerMateriasCursadas(id);
         for (Materia mat: listaMateria){
             modelo.addRow(new Object[]{
                 mat.getIdMateria(),
                 mat.getNombre(),
-                0,
+                    0,
             });
         }
         
     }
     
-    
+    private void actualizarNota(){
+        
+        
+        int filaSeleccionada = jtTableIns.getSelectedRow();
+        Object[] datosFila = new Object[modelo.getColumnCount()];
+            for (int i = 0; i < modelo.getColumnCount(); i++) {
+                datosFila[i] = modelo.getValueAt(filaSeleccionada, i);
+            }
+  
+            
+        String aux = datosFila[0].toString();
+        String aux2 = datosFila[2].toString();
+        
+        double nota = Integer.parseInt(aux2);
+        int idAlumno = jtComboBoxAct.getItemAt(jtComboBoxAct.getSelectedIndex()).getIdAlumno();
+        int idMateria = Integer.parseInt(aux);
+       
+        
+        if(nota > 10 || nota < 0){
+            JOptionPane.showMessageDialog(null, "Ingrese una nota valida");
+        } else {
+            InscripcionData insc = new InscripcionData();
+        insc.actualizarNota(idAlumno, idMateria, nota);
+        }
+        
+        
+    }
+        
+        
     
     private void borrarFilas(){
         
@@ -128,6 +156,11 @@ public class ActualizacionesNotas extends javax.swing.JInternalFrame {
         });
 
         jButton2.setText("Salir");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -183,6 +216,8 @@ public class ActualizacionesNotas extends javax.swing.JInternalFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
+        actualizarNota();
+        
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jtComboBoxActKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jtComboBoxActKeyReleased
@@ -190,6 +225,11 @@ public class ActualizacionesNotas extends javax.swing.JInternalFrame {
 
         
     }//GEN-LAST:event_jtComboBoxActKeyReleased
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // TODO add your handling code here:
+        this.dispose();
+    }//GEN-LAST:event_jButton2ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
