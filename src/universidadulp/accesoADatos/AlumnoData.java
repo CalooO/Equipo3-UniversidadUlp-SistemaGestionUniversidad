@@ -86,7 +86,7 @@ public class AlumnoData {
     }
     
     public Alumno buscarAlumnoPorId(int id){
-        String sql="select dni, apellido, nombre fechaNac from alumno where id=?";
+        String sql="select dni, apellido, nombre, fechaNac from alumno where id=?";
         Alumno alumno=null;
         try {
             PreparedStatement ps=con.prepareStatement(sql);
@@ -113,7 +113,7 @@ public class AlumnoData {
     }
     
      public Alumno buscarAlumnoPorDni(int dni){
-        String sql="select idAlumno, dni, apellido, nombre fechaNac from alumno where dni=?";
+        String sql="select idAlumno, dni, apellido, nombre, fechaNac from alumno where dni=?";
         Alumno alumno=null;
         try {
             PreparedStatement ps=con.prepareStatement(sql);
