@@ -199,7 +199,7 @@ public class InscripcionData {
     }
     
     public List<Alumno> obtenerAlumnosPorMateria (int idMateria){
-        String sql="Select idAlumno, dni, apellido, nombre, fechaNacimiento from inscripcion i"
+        String sql="Select a.idAlumno, dni, apellido, nombre, fechaNac, estado from inscripcion i "
                 + "join alumno a on(i.idAlumno=a.idAlumno) where idMateria=? and estado=1";
         ArrayList<Alumno> listaAlumnos = new ArrayList<>();
         try {
@@ -212,8 +212,8 @@ public class InscripcionData {
                 alumno.setDni(rs.getInt("dni"));
                 alumno.setApellido(rs.getString("apellido"));
                 alumno.setNombre(rs.getString("nombre"));
-                alumno.setFechaNacimiento(rs.getDate("fechaNacimiento").toLocalDate());
-                alumno.setActivo(true);
+                alumno.setFechaNacimiento(rs.getDate("fechaNac").toLocalDate());
+                alumno.setActivo(rs.getBoolean("estado"));
                 listaAlumnos.add(alumno);
             }
             ps.close();

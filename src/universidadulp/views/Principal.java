@@ -107,6 +107,11 @@ public class Principal extends javax.swing.JFrame {
         sd.setText("Consultas");
 
         jmAlumnoxMateria.setText("Alumnos por materia");
+        jmAlumnoxMateria.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jmAlumnoxMateriaActionPerformed(evt);
+            }
+        });
         sd.add(jmAlumnoxMateria);
 
         jMenuBar1.add(sd);
@@ -183,6 +188,16 @@ public class Principal extends javax.swing.JFrame {
         jdpMain.add(an);
         jdpMain.moveToFront(an);
     }//GEN-LAST:event_jmManipNotasActionPerformed
+
+    private void jmAlumnoxMateriaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmAlumnoxMateriaActionPerformed
+        // TODO add your handling code here:
+        jdpMain.removeAll();
+        jdpMain.repaint();
+        ConsultaMateria cm = new ConsultaMateria();
+        cm.setVisible(true);
+        jdpMain.add(cm);
+        jdpMain.moveToFront(cm);
+    }//GEN-LAST:event_jmAlumnoxMateriaActionPerformed
 
     /**
      * @param args the command line arguments
