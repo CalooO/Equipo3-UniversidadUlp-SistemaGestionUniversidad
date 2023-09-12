@@ -1,10 +1,14 @@
 
 package universidadulp.views;
 
+import javax.swing.JOptionPane;
+import universidadulp.Entidades.Materia;
 import universidadulp.accesoADatos.MateriaData;
 
 public class GestionMaterias extends javax.swing.JInternalFrame {
 
+    MateriaData matData = new MateriaData();
+    
     public GestionMaterias() {
         initComponents();
     }
@@ -52,6 +56,11 @@ public class GestionMaterias extends javax.swing.JInternalFrame {
         jLabel5.setText("Estado");
 
         jbBuscar.setText("Buscar");
+        jbBuscar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbBuscarActionPerformed(evt);
+            }
+        });
 
         jbNuevo.setText("Nuevo");
         jbNuevo.addActionListener(new java.awt.event.ActionListener() {
@@ -61,8 +70,18 @@ public class GestionMaterias extends javax.swing.JInternalFrame {
         });
 
         jbEliminar.setText("Eliminar");
+        jbEliminar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbEliminarActionPerformed(evt);
+            }
+        });
 
         jbGuardar.setText("Guardar");
+        jbGuardar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbGuardarActionPerformed(evt);
+            }
+        });
 
         jbSalir.setText("Salir");
         jbSalir.addActionListener(new java.awt.event.ActionListener() {
@@ -164,6 +183,65 @@ public class GestionMaterias extends javax.swing.JInternalFrame {
         this.dispose();
     }//GEN-LAST:event_jbSalirActionPerformed
 
+    private void jbBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbBuscarActionPerformed
+        
+        try{
+            if(!jtCodigo.getText().isEmpty()){
+
+                Materia materia = new Materia();
+                materia = matData.buscarMateria(Integer.parseInt(jtCodigo.getText()));
+                jtNombre.setText(materia.getNombre());
+                jtAnio.setText(materia.getAnioMateria()+"");
+                jrbEstado.setSelected(materia.isActivo());
+            }
+        }catch(NumberFormatException e){
+            
+            JOptionPane.showMessageDialog(this, "El Codigo debe ser un numero entero", "ADVERTENCIA", JOptionPane.WARNING_MESSAGE);
+        }
+    }//GEN-LAST:event_jbBuscarActionPerformed
+
+    private void jbGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbGuardarActionPerformed
+        
+        try{
+            if(!jtCodigo.getText().isEmpty()){
+
+                int codigo = Integer.parseInt(jtCodigo.getText());
+                String nombre = jtNombre.getText();
+                int anio = Integer.parseInt(jtAnio.getText());
+
+                boolean estado;
+
+                if(jrbEstado.isSelected()){
+
+                    estado = true;
+                }else {
+
+                    estado = false;
+                }
+
+                Materia materia = new Materia(codigo, nombre, anio, estado);
+                matData.guardarMateria(materia);
+                matData.modificarMateria(materia);
+            }
+        }catch(NumberFormatException e){
+            
+            JOptionPane.showMessageDialog(this, "El Codigo debe ser un numero entero", "ADVERTENCIA", JOptionPane.WARNING_MESSAGE);
+        }
+    }//GEN-LAST:event_jbGuardarActionPerformed
+
+    private void jbEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbEliminarActionPerformed
+        
+        try{
+            if(!jtCodigo.getText().isEmpty()){
+                
+                matData.eliminarMateria(Integer.parseInt(jtCodigo.getText()));
+            }
+            
+        }catch(NumberFormatException e){
+            
+            JOptionPane.showMessageDialog(this, "El Codigo debe ser un numero entero", "ADVERTENCIA", JOptionPane.WARNING_MESSAGE);
+        }
+    }//GEN-LAST:event_jbEliminarActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;
