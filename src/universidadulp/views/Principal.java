@@ -95,6 +95,11 @@ public class Principal extends javax.swing.JFrame {
         jmManejoInscripciones.add(jmManejoInscripcion);
 
         jmManipNotas.setText("Manipulacion de notas");
+        jmManipNotas.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jmManipNotasActionPerformed(evt);
+            }
+        });
         jmManejoInscripciones.add(jmManipNotas);
 
         jMenuBar1.add(jmManejoInscripciones);
@@ -168,6 +173,16 @@ public class Principal extends javax.swing.JFrame {
         jdpMain.add(gM);
         jdpMain.moveToFront(gM);
     }//GEN-LAST:event_jmFormMateriaActionPerformed
+
+    private void jmManipNotasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmManipNotasActionPerformed
+        // TODO add your handling code here:
+        jdpMain.removeAll();
+        jdpMain.repaint();
+        ActualizacionesNotas an = new ActualizacionesNotas();
+        an.setVisible(true);
+        jdpMain.add(an);
+        jdpMain.moveToFront(an);
+    }//GEN-LAST:event_jmManipNotasActionPerformed
 
     /**
      * @param args the command line arguments
