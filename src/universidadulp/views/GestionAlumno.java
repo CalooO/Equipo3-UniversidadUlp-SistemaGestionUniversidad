@@ -5,6 +5,7 @@
 package universidadulp.views;
 
 import java.sql.Date;
+import java.time.LocalDate;
 import java.time.ZoneId;
 import javax.swing.JOptionPane;
 import universidadulp.Entidades.Alumno;
@@ -75,6 +76,11 @@ public class GestionAlumno extends javax.swing.JInternalFrame {
         jLabel6.setText("Fecha de Nacimiento:");
 
         jbEliminar.setLabel("ELIMINAR");
+        jbEliminar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbEliminarActionPerformed(evt);
+            }
+        });
 
         jbNuevo.setLabel("NUEVO");
         jbNuevo.addActionListener(new java.awt.event.ActionListener() {
@@ -84,6 +90,11 @@ public class GestionAlumno extends javax.swing.JInternalFrame {
         });
 
         jbGuardar.setLabel("GUARDAR");
+        jbGuardar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbGuardarActionPerformed(evt);
+            }
+        });
 
         jbSalir.setLabel("SALIR");
         jbSalir.addActionListener(new java.awt.event.ActionListener() {
@@ -207,7 +218,7 @@ public class GestionAlumno extends javax.swing.JInternalFrame {
                 jtApellido.setText(alu.getApellido());
                 jtNombre.setText(alu.getNombre());
                 jrbEstado.setSelected(alu.isActivo());
-                jdFecha.setDate(Date.from(alu.getFechaNacimiento().atStartOfDay(ZoneId.systemDefault()).toInstant()));
+                jdFecha.setDate(Date.from(alu.getFechaNacimiento().atStartOfDay().atZone(ZoneId.systemDefault()).toInstant()));
             }else{
                 JOptionPane.showMessageDialog(this, "El campo dni esta vacio", "ADVERTENCIA", JOptionPane.WARNING_MESSAGE);
             }
@@ -215,6 +226,42 @@ public class GestionAlumno extends javax.swing.JInternalFrame {
             JOptionPane.showMessageDialog(this, "El campo dni debe ser de formato numerico", "ADVERTENCIA", JOptionPane.WARNING_MESSAGE);
         }
     }//GEN-LAST:event_jbBuscarActionPerformed
+
+    private void jbEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbEliminarActionPerformed
+        // TODO add your handling code here:
+        try{
+            if(!jtDni.getText().isEmpty()){
+                ad.elimarAlumno(Integer.parseInt(jtDni.getText()));
+            }else{
+                JOptionPane.showMessageDialog(this, "El campo dni esta vacio", "ADVERTENCIA", JOptionPane.WARNING_MESSAGE);
+            }
+        }catch(NumberFormatException e){
+            JOptionPane.showMessageDialog(this, "El campo dni debe ser de formato numerico", "ADVERTENCIA", JOptionPane.WARNING_MESSAGE);
+        }
+    }//GEN-LAST:event_jbEliminarActionPerformed
+
+    private void jbGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbGuardarActionPerformed
+        // TODO add your handling code here:
+        boolean est;
+        try{
+            if(!jtDni.getText().isEmpty() || jtApellido.getText().isEmpty() || jtNombre.getText().isEmpty() ||
+                    jdFecha.getDate()!=null){
+                int dni = Integer.parseInt(jtDni.getText());
+                String ape = jtApellido.getText();
+                String nom = jtNombre.getText();
+                if(jrbEstado.isSelected()){
+                    est = true;
+                }else{
+                    est = false;
+                }
+                LocalDate fecha = jdFecha.getDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+                Alumno alu = new Alumno(dni, ape, nom, fecha, est);
+                ad.guardarAlumno(alu);
+            }
+        }catch(NumberFormatException e){
+            JOptionPane.showMessageDialog(this, "El campo dni debe ser de formato numerico", "ADVERTENCIA", JOptionPane.WARNING_MESSAGE);
+        }
+    }//GEN-LAST:event_jbGuardarActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
