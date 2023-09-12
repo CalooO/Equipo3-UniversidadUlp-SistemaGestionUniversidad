@@ -56,9 +56,9 @@
                           </Group>
                           <Component id="jtApellido" min="-2" pref="188" max="-2" attributes="0"/>
                           <Component id="jtNombre" min="-2" pref="188" max="-2" attributes="0"/>
-                          <Component id="jrbEstado" min="-2" max="-2" attributes="0"/>
-                          <Group type="103" alignment="0" groupAlignment="1" attributes="0">
-                              <Component id="jdateFecha" alignment="1" min="-2" pref="188" max="-2" attributes="0"/>
+                          <Component id="jrbEstado" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Group type="103" alignment="0" groupAlignment="1" max="-2" attributes="0">
+                              <Component id="jdFecha" alignment="0" max="32767" attributes="0"/>
                               <Group type="102" alignment="0" attributes="0">
                                   <EmptySpace min="-2" pref="13" max="-2" attributes="0"/>
                                   <Component id="jbGuardar" min="-2" max="-2" attributes="0"/>
@@ -77,7 +77,7 @@
                       <Component id="jSeparator1" min="-2" pref="459" max="-2" attributes="0"/>
                   </Group>
               </Group>
-              <EmptySpace pref="57" max="32767" attributes="0"/>
+              <EmptySpace pref="100" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -113,9 +113,9 @@
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
                   <Component id="jLabel6" min="-2" max="-2" attributes="0"/>
-                  <Component id="jdateFecha" min="-2" max="-2" attributes="0"/>
+                  <Component id="jdFecha" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace min="-2" pref="44" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="36" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
                   <Component id="jbEliminar" min="-2" max="-2" attributes="0"/>
                   <Component id="jbNuevo" min="-2" max="-2" attributes="0"/>
@@ -200,6 +200,9 @@
       <Properties>
         <Property name="label" type="java.lang.String" value="NUEVO"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jbNuevoActionPerformed"/>
+      </Events>
     </Component>
     <Component class="java.awt.Button" name="jbGuardar">
       <Properties>
@@ -218,8 +221,11 @@
       <Properties>
         <Property name="label" type="java.lang.String" value="BUSCAR"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jbBuscarActionPerformed"/>
+      </Events>
     </Component>
-    <Component class="com.toedter.calendar.JDateChooser" name="jdateFecha">
+    <Component class="com.toedter.calendar.JDateChooser" name="jdFecha">
     </Component>
   </SubComponents>
 </Form>

@@ -22,7 +22,7 @@ public class AlumnoData {
     }
     
     public void guardarAlumno(Alumno alumno){
-        String sql="Insert into alumno (dni, apellido, nombre, fechaNac, estado)"
+        String sql="Insert into alumno (dni, apellido, nombre, fechaNac, estado) "
                 + "Values (?,?,?,?,?)";
         try {
             PreparedStatement ps=con.prepareStatement(sql,Statement.RETURN_GENERATED_KEYS);
@@ -47,7 +47,7 @@ public class AlumnoData {
     }
     
     public void modificarAlumno(Alumno alumno){
-        String sql="Update alumno set dni=?, apellido=?, nombre=?, fechaNac=?"
+        String sql="Update alumno set dni=?, apellido=?, nombre=?, fechaNac=? "
                 + "where idAlumno=?";
         try {
             PreparedStatement ps=con.prepareStatement(sql);
@@ -69,11 +69,11 @@ public class AlumnoData {
         
     }
     
-    public void elimarAlumno(int id){
-         String sql="Update alumno set estado=0 where idAlumno=?";
+    public void elimarAlumno(int dni){
+         String sql="Update alumno set estado=0 where dni=?";
         try {
             PreparedStatement ps=con.prepareStatement(sql);
-            ps.setInt(1, id);
+            ps.setInt(1, dni);
             int exito=ps.executeUpdate();
             if(1==exito){
                 
@@ -86,7 +86,7 @@ public class AlumnoData {
     }
     
     public Alumno buscarAlumnoPorId(int id){
-        String sql="select dni, apellido, nombre fechaNac from alumno where id=? and estado=";
+        String sql="select dni, apellido, nombre fechaNac from alumno where id=?";
         Alumno alumno=null;
         try {
             PreparedStatement ps=con.prepareStatement(sql);
@@ -99,7 +99,7 @@ public class AlumnoData {
                 alumno.setApellido(rs.getString("apellido"));
                 alumno.setNombre(rs.getString("nombre"));
                 alumno.setFechaNacimiento(rs.getDate("fechaNac").toLocalDate());
-                alumno.setActivo(true);
+                alumno.setActivo(rs.getBoolean("estado"));
                 
             }else{
                 JOptionPane.showMessageDialog(null,"No existe ese alumno con ese id ");
@@ -113,7 +113,7 @@ public class AlumnoData {
     }
     
      public Alumno buscarAlumnoPorDni(int dni){
-        String sql="select idAlumno, dni, apellido, nombre fechaNac from alumno where dni=? and estado=";
+        String sql="select idAlumno, dni, apellido, nombre fechaNac from alumno where dni=?";
         Alumno alumno=null;
         try {
             PreparedStatement ps=con.prepareStatement(sql);
@@ -126,7 +126,7 @@ public class AlumnoData {
                 alumno.setApellido(rs.getString("apellido"));
                 alumno.setNombre(rs.getString("nombre"));
                 alumno.setFechaNacimiento(rs.getDate("fechaNac").toLocalDate());
-                alumno.setActivo(true);
+                alumno.setActivo(rs.getBoolean("estado"));
                 
             }else{
                 JOptionPane.showMessageDialog(null,"No existe ese alumno con ese id ");
