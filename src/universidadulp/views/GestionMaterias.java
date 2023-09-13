@@ -225,7 +225,7 @@ public class GestionMaterias extends javax.swing.JInternalFrame {
 
                 materia = new Materia(codigo, nombre, anio, estado);
                 
-                if(matData.buscarMateria(codigo)==null){
+                if(matData.buscarNombre(codigo)==null){
                     
                     matData.guardarMateria(materia);
                 

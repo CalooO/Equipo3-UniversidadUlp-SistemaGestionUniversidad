@@ -85,6 +85,42 @@ public class MateriaData {
         return materia;
     }
     
+    public Materia buscarNombre(int id){
+        
+        Materia materia = null;
+        
+        String sql = "select idMateria,nombre,año,estado from materia "
+                + "where idMateria=?";
+        
+        PreparedStatement ps = null;
+        
+        try {
+            ps=con.prepareStatement(sql);
+            ps.setInt(1, id);
+            
+            ResultSet rs = ps.executeQuery();
+            
+            if(rs.next()){
+                
+                materia = new Materia();
+                materia.setIdMateria(id);
+                materia.setNombre(rs.getString("nombre"));
+                materia.setAnioMateria(rs.getInt("año"));
+                materia.setActivo(rs.getBoolean("estado"));
+            }else {
+                
+                //JOptionPane.showMessageDialog(null, "No existe la materia");
+                ps.close();
+            }
+            
+        } catch (SQLException ex) {
+            
+            JOptionPane.showMessageDialog(null,"Error al acceder a la tabla materia "+ex.getMessage());
+        }
+                
+        return materia;
+    }
+    
     public void modificarMateria(Materia materia){
         
         String sql = "update materia set nombre=?,año=?,estado=? "
