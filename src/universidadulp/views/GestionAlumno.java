@@ -242,9 +242,10 @@ public class GestionAlumno extends javax.swing.JInternalFrame {
 
     private void jbGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbGuardarActionPerformed
         // TODO add your handling code here:
+        
         boolean est;
         try{
-            if(!jtDni.getText().isEmpty() || jtApellido.getText().isEmpty() || jtNombre.getText().isEmpty() ||
+            if(!jtDni.getText().isEmpty() || !jtApellido.getText().isEmpty() || !jtNombre.getText().isEmpty() ||
                     jdFecha.getDate()!=null){
                 int dni = Integer.parseInt(jtDni.getText());
                 String ape = jtApellido.getText();
@@ -256,7 +257,11 @@ public class GestionAlumno extends javax.swing.JInternalFrame {
                 }
                 LocalDate fecha = jdFecha.getDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
                 Alumno alu = new Alumno(dni, ape, nom, fecha, est);
-                ad.guardarAlumno(alu);
+                if(ad.buscarDni(dni)==null){
+                    ad.guardarAlumno(alu);
+                }else{
+                    ad.modificarAlumno(alu);
+                }
             }
         }catch(NumberFormatException e){
             JOptionPane.showMessageDialog(this, "El campo dni debe ser de formato numerico", "ADVERTENCIA", JOptionPane.WARNING_MESSAGE);

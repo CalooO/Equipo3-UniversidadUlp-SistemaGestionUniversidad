@@ -47,15 +47,15 @@ public class AlumnoData {
     }
     
     public void modificarAlumno(Alumno alumno){
-        String sql="Update alumno set dni=?, apellido=?, nombre=?, fechaNac=? "
-                + "where idAlumno=?";
+        String sql="Update alumno set apellido=?, nombre=?, estado=?, fechaNac=? "
+                + "where dni=?";
         try {
             PreparedStatement ps=con.prepareStatement(sql);
-            ps.setInt(1,alumno.getDni());
-            ps.setString(2,alumno.getApellido());
-            ps.setString(3, alumno.getNombre());
+            ps.setString(1,alumno.getApellido());
+            ps.setString(2, alumno.getNombre());
+            ps.setBoolean(3, alumno.isActivo());
             ps.setDate(4, Date.valueOf(alumno.getFechaNacimiento()));
-            ps.setInt(5, alumno.getIdAlumno());
+            ps.setInt(5, alumno.getDni());
             
             int exito=ps.executeUpdate();
             if(1==exito){
@@ -163,5 +163,30 @@ public class AlumnoData {
             JOptionPane.showMessageDialog(null,"Error al acceder a la tabla alumno "+ex.getMessage());
         }
         return listaAlumnos;
+    }
+      
+    public Alumno buscarDni(int dni){
+        String sql="select idAlumno, dni, apellido, nombre, fechaNac, estado from alumno where dni=?";
+        Alumno alumno=null;
+        try {
+            PreparedStatement ps=con.prepareStatement(sql);
+            ps.setInt(1, dni);
+            ResultSet rs=ps.executeQuery();
+            if(rs.next()){
+                alumno=new Alumno();
+                alumno.setIdAlumno(rs.getInt("idAlumno"));
+                alumno.setDni(dni);
+                alumno.setApellido(rs.getString("apellido"));
+                alumno.setNombre(rs.getString("nombre"));
+                alumno.setFechaNacimiento(rs.getDate("fechaNac").toLocalDate());
+                alumno.setActivo(rs.getBoolean("estado"));
+                
+            }
+            ps.close();
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null,"Error al acceder a la tabla alumno "+ex.getMessage());
+        }
+        
+        return alumno;
     }
 }
