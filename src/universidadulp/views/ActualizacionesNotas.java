@@ -47,7 +47,7 @@ public class ActualizacionesNotas extends javax.swing.JInternalFrame {
     private void mostrarNotas(){
         InscripcionData ins = new InscripcionData();
         int id = jtComboBoxAct.getItemAt(jtComboBoxAct.getSelectedIndex()).getIdAlumno();
-        List<Materia> listaMateria = ins.obtenerMateriasCursadas(id);
+       
         List<Inscripcion> listaInscripcion=ins.obtenerInscripcionesPorAlumno(id);
         for (Inscripcion inscripcion : listaInscripcion) {
           
@@ -69,7 +69,9 @@ public class ActualizacionesNotas extends javax.swing.JInternalFrame {
                 datosFila[i] = modelo.getValueAt(filaSeleccionada, i);
             }
   
-            
+        // int idMateria=Integer.parseInt(modelo.getValueAt(filaSeleccionada,0).toString);
+        // double nota=Double.parseDouble(modelo.getValueAt(filaSeleccionada,2).toString);
+        
         String aux = datosFila[0].toString();
         String aux2 = datosFila[2].toString();
         
