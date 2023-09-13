@@ -194,7 +194,7 @@ public class GestionMaterias extends javax.swing.JInternalFrame {
                 jtAnio.setText(materia.getAnioMateria()+"");
                 jrbEstado.setSelected(materia.isActivo());
             }
-        }catch(NumberFormatException e){
+        }catch(NumberFormatException ex){
             
             JOptionPane.showMessageDialog(this, "El Codigo debe ser un numero entero", "ADVERTENCIA", JOptionPane.WARNING_MESSAGE);
         }
@@ -204,14 +204,16 @@ public class GestionMaterias extends javax.swing.JInternalFrame {
         
         try{
             Materia materia = new Materia();
+            int codigo;
+            String nombre;
+            int anio;
+            boolean estado;
             
             if(!jtCodigo.getText().isEmpty()){
 
-                int codigo = Integer.parseInt(jtCodigo.getText());
-                String nombre = jtNombre.getText();
-                int anio = Integer.parseInt(jtAnio.getText());
-
-                boolean estado;
+                codigo = Integer.parseInt(jtCodigo.getText());
+                nombre = jtNombre.getText();
+                anio = Integer.parseInt(jtAnio.getText());
 
                 if(jrbEstado.isSelected()){
 
@@ -222,11 +224,18 @@ public class GestionMaterias extends javax.swing.JInternalFrame {
                 }
 
                 materia = new Materia(codigo, nombre, anio, estado);
-                matData.guardarMateria(materia);
                 
+                if(matData.buscarMateria(codigo)==null){
+                    
+                    matData.guardarMateria(materia);
+                
+                }else{
+                    
+                    matData.modificarMateria(materia);
+                }
             }
                 
-        }catch(NumberFormatException e){
+        }catch(NumberFormatException ex){
             
             JOptionPane.showMessageDialog(this, "El Codigo debe ser un numero entero", "ADVERTENCIA", JOptionPane.WARNING_MESSAGE);
         }
@@ -240,7 +249,7 @@ public class GestionMaterias extends javax.swing.JInternalFrame {
                 matData.eliminarMateria(Integer.parseInt(jtCodigo.getText()));
             }
             
-        }catch(NumberFormatException e){
+        }catch(NumberFormatException ex){
             
             JOptionPane.showMessageDialog(this, "El Codigo debe ser un numero entero", "ADVERTENCIA", JOptionPane.WARNING_MESSAGE);
         }

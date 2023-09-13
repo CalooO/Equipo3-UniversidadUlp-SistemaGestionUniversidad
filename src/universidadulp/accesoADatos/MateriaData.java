@@ -53,8 +53,8 @@ public class MateriaData {
         
         Materia materia = null;
         
-        String sql = "select nombre,año,estado from materia "
-                + "where idMateria=? and estado=?";
+        String sql = "select idMateria,nombre,año,estado from materia "
+                + "where idMateria=?";
         
         PreparedStatement ps = null;
         
@@ -70,7 +70,7 @@ public class MateriaData {
                 materia.setIdMateria(id);
                 materia.setNombre(rs.getString("nombre"));
                 materia.setAnioMateria(rs.getInt("año"));
-                materia.setActivo(true);
+                materia.setActivo(rs.getBoolean("estado"));
             }else {
                 
                 JOptionPane.showMessageDialog(null, "No existe la materia");
@@ -89,13 +89,17 @@ public class MateriaData {
         
         String sql = "update materia set nombre=?,año=?,estado=? "
                 + "where idMateria=?";
+        
+        PreparedStatement ps = null;
+        
         try {
-            PreparedStatement ps=con.prepareStatement(sql);
+            ps=con.prepareStatement(sql);
             ps.setString(1, materia.getNombre());
             ps.setInt(2, materia.getAnioMateria());
             ps.setBoolean(3, materia.isActivo());
+            ps.setInt(4, materia.getIdMateria());
             
-            int exito=ps.executeUpdate();
+            int exito = ps.executeUpdate();
             if(1 == exito){
                 
                  JOptionPane.showMessageDialog(null,"Materia modificada.");
@@ -105,7 +109,6 @@ public class MateriaData {
             
             JOptionPane.showMessageDialog(null,"Error al acceder a la tabla materia "+ex.getMessage());
         }
-        
     }
     
     public void eliminarMateria(int id){
