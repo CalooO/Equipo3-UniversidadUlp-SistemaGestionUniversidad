@@ -203,6 +203,8 @@ public class GestionMaterias extends javax.swing.JInternalFrame {
     private void jbGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbGuardarActionPerformed
         
         try{
+            Materia materia = new Materia();
+            
             if(!jtCodigo.getText().isEmpty()){
 
                 int codigo = Integer.parseInt(jtCodigo.getText());
@@ -219,10 +221,11 @@ public class GestionMaterias extends javax.swing.JInternalFrame {
                     estado = false;
                 }
 
-                Materia materia = new Materia(codigo, nombre, anio, estado);
+                materia = new Materia(codigo, nombre, anio, estado);
                 matData.guardarMateria(materia);
-                matData.modificarMateria(materia);
+                
             }
+                
         }catch(NumberFormatException e){
             
             JOptionPane.showMessageDialog(this, "El Codigo debe ser un numero entero", "ADVERTENCIA", JOptionPane.WARNING_MESSAGE);
