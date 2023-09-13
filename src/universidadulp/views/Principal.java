@@ -117,6 +117,11 @@ public class Principal extends javax.swing.JFrame {
         jMenuBar1.add(sd);
 
         jmSalir.setText("Salir");
+        jmSalir.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jmSalirMouseClicked(evt);
+            }
+        });
         jmSalir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jmSalirActionPerformed(evt);
@@ -142,7 +147,6 @@ public class Principal extends javax.swing.JFrame {
 
     private void jmSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmSalirActionPerformed
         // TODO add your handling code here:
-        this.dispose();
     }//GEN-LAST:event_jmSalirActionPerformed
 
     private void jmFormAlumnoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmFormAlumnoActionPerformed
@@ -198,6 +202,11 @@ public class Principal extends javax.swing.JFrame {
         jdpMain.add(cm);
         jdpMain.moveToFront(cm);
     }//GEN-LAST:event_jmAlumnoxMateriaActionPerformed
+
+    private void jmSalirMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jmSalirMouseClicked
+        // TODO add your handling code here:
+        System.exit(0);
+    }//GEN-LAST:event_jmSalirMouseClicked
 
     /**
      * @param args the command line arguments
