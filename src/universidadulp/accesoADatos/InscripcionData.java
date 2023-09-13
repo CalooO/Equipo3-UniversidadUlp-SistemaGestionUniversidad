@@ -17,8 +17,8 @@ import universidadulp.Entidades.Materia;
 public class InscripcionData {
 
     private Connection con = null;
-    private AlumnoData alumnoData;
-    private MateriaData materiaData;
+    private AlumnoData alumnoData=new AlumnoData();
+    private MateriaData materiaData=new MateriaData();
 
     public InscripcionData() {
         con = Conexion.getConexion();
@@ -79,9 +79,11 @@ public class InscripcionData {
         return listaInscripciones;
     }
 
-    public List<Inscripcion> obtenerInscripcionesPorAlumno(int id) {
-        String sql = "Select idInscripcion, nota, idAlumno, idMateria from inscripcion where id=?";
+    public ArrayList<Inscripcion> obtenerInscripcionesPorAlumno(int id) {
+        String sql = "Select idInscripcion, nota, idAlumno, idMateria from inscripcion where idAlumno=?";
         ArrayList<Inscripcion> listaInscripciones = new ArrayList<>();
+        ArrayList<Alumno> listaAlumno= alumnoData.listarAlumnos();
+        ArrayList<Materia> listaMateria=materiaData.listarMaterias();
         try {
 
             PreparedStatement ps = con.prepareStatement(sql);
@@ -90,15 +92,17 @@ public class InscripcionData {
             while (rs.next()) {
                 Inscripcion inscripcion = new Inscripcion();
                 inscripcion.setIdInscripcion(rs.getInt("idInscripcion"));
-                inscripcion.setNota(rs.getInt("nota"));
-                for (Alumno alumno : alumnoData.listarAlumnos()) {
+                inscripcion.setNota(rs.getDouble("nota"));
+                for (Alumno alumno : listaAlumno) {
                     if (rs.getInt("idAlumno") == alumno.getIdAlumno()) {
                         inscripcion.setAlumno(alumno);
+                        break;
                     }
                 }
-                for (Materia materia : materiaData.listarMaterias()) {
+                for (Materia materia :listaMateria) {
                     if (rs.getInt("idMateria") == materia.getIdMateria()) {
                         inscripcion.setMateria(materia);
+                        break;
                     }
                 }
 

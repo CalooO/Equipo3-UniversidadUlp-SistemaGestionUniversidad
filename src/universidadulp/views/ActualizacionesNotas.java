@@ -48,11 +48,13 @@ public class ActualizacionesNotas extends javax.swing.JInternalFrame {
         InscripcionData ins = new InscripcionData();
         int id = jtComboBoxAct.getItemAt(jtComboBoxAct.getSelectedIndex()).getIdAlumno();
         List<Materia> listaMateria = ins.obtenerMateriasCursadas(id);
-        for (Materia mat: listaMateria){
+        List<Inscripcion> listaInscripcion=ins.obtenerInscripcionesPorAlumno(id);
+        for (Inscripcion inscripcion : listaInscripcion) {
+          
             modelo.addRow(new Object[]{
-                mat.getIdMateria(),
-                mat.getNombre(),
-                    0,
+                inscripcion.getMateria().getIdMateria(),
+                inscripcion.getMateria().getNombre(),
+                inscripcion.getNota()
             });
         }
         
