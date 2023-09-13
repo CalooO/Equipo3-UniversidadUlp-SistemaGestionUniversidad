@@ -24,7 +24,7 @@ public class ActualizacionesNotas extends javax.swing.JInternalFrame {
      */
      private DefaultTableModel modelo = new DefaultTableModel() {
         public boolean isCellEditable(int f, int c) {
-            return true;
+            return c == 2;
         }
     };
     private void armarCabecera() {
