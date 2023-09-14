@@ -71,15 +71,17 @@ public class MateriaData {
                 materia.setNombre(rs.getString("nombre"));
                 materia.setAnioMateria(rs.getInt("año"));
                 materia.setActivo(rs.getBoolean("estado"));
-            }else {
+            
+            }/*else {
                 
                 JOptionPane.showMessageDialog(null, "No existe la materia");
                 ps.close();
-            }
+            }*/
             
-        } catch (SQLException ex) {
+        }catch (SQLException ex) {
             
             JOptionPane.showMessageDialog(null,"Error al acceder a la tabla materia "+ex.getMessage());
+            
         }
                 
         return materia;

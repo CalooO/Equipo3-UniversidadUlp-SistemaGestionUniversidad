@@ -197,6 +197,10 @@ public class GestionMaterias extends javax.swing.JInternalFrame {
         }catch(NumberFormatException ex){
             
             JOptionPane.showMessageDialog(this, "El Codigo debe ser un numero entero", "ADVERTENCIA", JOptionPane.WARNING_MESSAGE);
+        
+        }catch(NullPointerException ex){
+            
+            JOptionPane.showMessageDialog(this, "No existe la materia", "ADVERTENCIA", JOptionPane.WARNING_MESSAGE);
         }
     }//GEN-LAST:event_jbBuscarActionPerformed
 
@@ -225,7 +229,7 @@ public class GestionMaterias extends javax.swing.JInternalFrame {
 
                 materia = new Materia(codigo, nombre, anio, estado);
                 
-                if(matData.buscarNombre(codigo)==null){
+                if(matData.buscarNombre(codigo) == null){
                     
                     matData.guardarMateria(materia);
                 
@@ -237,7 +241,15 @@ public class GestionMaterias extends javax.swing.JInternalFrame {
                 
         }catch(NumberFormatException ex){
             
-            JOptionPane.showMessageDialog(this, "El Codigo debe ser un numero entero", "ADVERTENCIA", JOptionPane.WARNING_MESSAGE);
+            if(!jtCodigo.getText().isEmpty() || !jtAnio.getText().isEmpty()){
+                
+                JOptionPane.showMessageDialog(this, "El Codigo y el Año deben ser un numero entero", "ADVERTENCIA", JOptionPane.WARNING_MESSAGE);
+            }else {
+                
+                JOptionPane.showMessageDialog(this, "Hay campos vacios", "ADVERTENCIA", JOptionPane.WARNING_MESSAGE);
+            }
+            
+            //JOptionPane.showMessageDialog(this, "El Codigo y el Año deben ser un numero entero", "ADVERTENCIA", JOptionPane.WARNING_MESSAGE);
         }
     }//GEN-LAST:event_jbGuardarActionPerformed
 
