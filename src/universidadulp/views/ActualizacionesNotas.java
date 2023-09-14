@@ -63,12 +63,13 @@ public class ActualizacionesNotas extends javax.swing.JInternalFrame {
     private void actualizarNota(){
         
         
-        int filaSeleccionada = jtTableIns.getSelectedRow();
+        try{
+            int filaSeleccionada = jtTableIns.getSelectedRow();
         Object[] datosFila = new Object[modelo.getColumnCount()];
             for (int i = 0; i < modelo.getColumnCount(); i++) {
                 datosFila[i] = modelo.getValueAt(filaSeleccionada, i);
             }
-  
+       
         // int idMateria=Integer.parseInt(modelo.getValueAt(filaSeleccionada,0).toString);
         // double nota=Double.parseDouble(modelo.getValueAt(filaSeleccionada,2).toString);
         
@@ -86,7 +87,13 @@ public class ActualizacionesNotas extends javax.swing.JInternalFrame {
             InscripcionData insc = new InscripcionData();
         insc.actualizarNota(idAlumno, idMateria, nota);
         }
+        } catch(java.lang.ArrayIndexOutOfBoundsException e){
+            JOptionPane.showMessageDialog(null, "Seleccione una fila");
+        } catch(java.lang.NumberFormatException e){
+            JOptionPane.showMessageDialog(null, "Presione enter para ingresar la nota");
+        }
         
+            
         
     }
         
