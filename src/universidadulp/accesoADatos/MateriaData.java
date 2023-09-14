@@ -54,7 +54,7 @@ public class MateriaData {
         Materia materia = null;
         
         String sql = "select idMateria,nombre,año,estado from materia "
-                + "where idMateria=?";
+                + "where idMateria = ?";
         
         PreparedStatement ps = null;
         
@@ -87,33 +87,33 @@ public class MateriaData {
         return materia;
     }
     
-    public Materia buscarNombre(int id){
+    public Materia buscarNombre(String nombre){
         
         Materia materia = null;
         
         String sql = "select idMateria,nombre,año,estado from materia "
-                + "where idMateria=?";
+                + "where nombre=?";
         
         PreparedStatement ps = null;
         
         try {
             ps=con.prepareStatement(sql);
-            ps.setInt(1, id);
+            ps.setString(1, nombre);
             
             ResultSet rs = ps.executeQuery();
             
             if(rs.next()){
                 
                 materia = new Materia();
-                materia.setIdMateria(id);
-                materia.setNombre(rs.getString("nombre"));
+                materia.setIdMateria(rs.getInt("idMateria"));
+                materia.setNombre(nombre);
                 materia.setAnioMateria(rs.getInt("año"));
                 materia.setActivo(rs.getBoolean("estado"));
-            }else {
+            }/*else {
                 
                 //JOptionPane.showMessageDialog(null, "No existe la materia");
                 ps.close();
-            }
+            }*/
             
         } catch (SQLException ex) {
             

@@ -193,6 +193,15 @@ public class GestionMaterias extends javax.swing.JInternalFrame {
                 jtNombre.setText(materia.getNombre());
                 jtAnio.setText(materia.getAnioMateria()+"");
                 jrbEstado.setSelected(materia.isActivo());
+                
+            }else if(!jtNombre.getText().isEmpty()){
+                
+                Materia materia = new Materia();
+                materia = matData.buscarNombre(jtNombre.getText());
+                jtCodigo.setText(materia.getIdMateria()+"");
+                //jtNombre.setText(materia.getNombre());
+                jtAnio.setText(materia.getAnioMateria()+"");
+                jrbEstado.setSelected(materia.isActivo());
             }
         }catch(NumberFormatException ex){
             
@@ -218,7 +227,6 @@ public class GestionMaterias extends javax.swing.JInternalFrame {
                 codigo = Integer.parseInt(jtCodigo.getText());
                 nombre = jtNombre.getText();
                 anio = Integer.parseInt(jtAnio.getText());
-
                 if(jrbEstado.isSelected()){
 
                     estado = true;
@@ -227,9 +235,9 @@ public class GestionMaterias extends javax.swing.JInternalFrame {
                     estado = false;
                 }
 
-                materia = new Materia(codigo, nombre, anio, estado);
+                materia = new Materia(nombre, anio, estado);
                 
-                if(matData.buscarNombre(codigo) == null){
+                if(matData.buscarMateria(codigo) == null){
                     
                     matData.guardarMateria(materia);
                 
