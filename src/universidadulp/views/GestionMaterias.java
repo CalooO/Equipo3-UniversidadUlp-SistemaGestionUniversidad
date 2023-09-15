@@ -221,7 +221,12 @@ public class GestionMaterias extends javax.swing.JInternalFrame {
         try{
             if(jtNombre.getText().isEmpty() || jtAnio.getText().isEmpty()){
                 
-                JOptionPane.showMessageDialog(this, "Los campos deben estar vacios", "ADVERTENCIA", JOptionPane.WARNING_MESSAGE);
+                JOptionPane.showMessageDialog(this, "Los campos no deben estar vacios", "ADVERTENCIA", JOptionPane.WARNING_MESSAGE);
+            }
+            
+            if(Integer.parseInt(jtAnio.getText()) < 1){
+                
+                JOptionPane.showMessageDialog(this, "El año debe ser mayor a 0", "ADVERTENCIA", JOptionPane.WARNING_MESSAGE);
             }
             
             Materia materia = new Materia();
