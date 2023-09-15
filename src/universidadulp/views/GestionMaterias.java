@@ -204,11 +204,11 @@ public class GestionMaterias extends javax.swing.JInternalFrame {
                 jrbEstado.setSelected(materia.isActivo());
             }else {
                 
-                JOptionPane.showMessageDialog(this, "Igrese un Codigo o un Nombre", "ADVERTENCIA", JOptionPane.WARNING_MESSAGE);
+                JOptionPane.showMessageDialog(this, "Igrese el Codigo o el Nombre de la materia que desea buscar", "ADVERTENCIA", JOptionPane.WARNING_MESSAGE);
             }
         }catch(NumberFormatException ex){
             
-            JOptionPane.showMessageDialog(this, "El Codigo debe ser un numero entero", "ADVERTENCIA", JOptionPane.WARNING_MESSAGE);
+            JOptionPane.showMessageDialog(this, "El Codigo de la materia debe ser un numero entero", "ADVERTENCIA", JOptionPane.WARNING_MESSAGE);
         
         }catch(NullPointerException ex){
             
@@ -219,16 +219,32 @@ public class GestionMaterias extends javax.swing.JInternalFrame {
     private void jbGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbGuardarActionPerformed
         
         try{
+            if(jtNombre.getText().isEmpty() || jtAnio.getText().isEmpty()){
+                
+                JOptionPane.showMessageDialog(this, "Los campos deben estar vacios", "ADVERTENCIA", JOptionPane.WARNING_MESSAGE);
+            }
+            
             Materia materia = new Materia();
             int codigo;
             String nombre;
             int anio;
             boolean estado;
             
-            if(!jtCodigo.getText().isEmpty()){
+            if(jtCodigo.getText().isEmpty()){
 
-                codigo = Integer.parseInt(jtCodigo.getText());
                 nombre = jtNombre.getText();
+                
+                char[] carac = nombre.toCharArray();
+                carac[0] = Character.toUpperCase(carac[0]);
+                for(int i = 0; i < nombre.length()-2; i++){
+                    
+                    if(carac[i] == ' ' || carac[i] == '.' || carac[i] == ','){
+                        
+                        carac[i + 1] = Character.toUpperCase(carac[i + 1]);
+                    }
+                }
+                
+                nombre = new String(carac);
                 anio = Integer.parseInt(jtAnio.getText());
                 if(jrbEstado.isSelected()){
 
@@ -237,30 +253,70 @@ public class GestionMaterias extends javax.swing.JInternalFrame {
 
                     estado = false;
                 }
-
-                materia = new Materia(nombre, anio, estado);
                 
-                if(matData.buscarMateria(codigo) == null){
+                materia = new Materia(nombre, anio, estado);
+                if(matData.buscarNombre(nombre)==null){
+                    
                     
                     matData.guardarMateria(materia);
                 
                 }else{
                     
+                    codigo = matData.buscarNombre(nombre).getIdMateria();
+                    materia.setIdMateria(codigo);
+                    matData.modificarMateria(materia);
+                }
+            }else {
+                codigo = Integer.parseInt(jtCodigo.getText());
+                nombre = jtNombre.getText();
+                
+                char[] carac = nombre.toCharArray();
+                carac[0] = Character.toUpperCase(carac[0]);
+                for(int i = 0; i < nombre.length()-2; i++){
+                    
+                    if(carac[i] == ' ' || carac[i] == '.' || carac[i] == ','){
+                        
+                        carac[i + 1] = Character.toUpperCase(carac[i + 1]);
+                    }
+                }
+                nombre = new String(carac);
+                anio = Integer.parseInt(jtAnio.getText());
+                if(jrbEstado.isSelected()){
+
+                    estado = true;
+                }else {
+
+                    estado = false;
+                }
+                
+                materia = new Materia(nombre, anio, estado);
+                if(matData.buscarMateria(codigo) != null){
+                    
+                    matData.modificarMateria(materia);
+                
+                }else if(matData.buscarMateria(codigo) == null && matData.buscarNombre(nombre) == null){
+                    
+                    matData.guardarMateria(materia);
+                }else if(matData.buscarNombre(nombre) != null){
+                    
+                    codigo = matData.buscarNombre(nombre).getIdMateria();
+                    materia.setIdMateria(codigo);
                     matData.modificarMateria(materia);
                 }
             }
                 
         }catch(NumberFormatException ex){
             
-            if(!jtCodigo.getText().isEmpty() || !jtAnio.getText().isEmpty()){
                 
-                JOptionPane.showMessageDialog(this, "El Codigo y el Año deben ser un numero entero", "ADVERTENCIA", JOptionPane.WARNING_MESSAGE);
-            }else {
+            JOptionPane.showMessageDialog(this, "El Codigo y el Año deben ser un numeros enteros", "ADVERTENCIA", JOptionPane.WARNING_MESSAGE);
+            
+            if(jtCodigo.getText().isEmpty() || jtAnio.getText().isEmpty() || jtNombre.getText().isEmpty()){
                 
                 JOptionPane.showMessageDialog(this, "Hay campos vacios", "ADVERTENCIA", JOptionPane.WARNING_MESSAGE);
-            }
             
-            //JOptionPane.showMessageDialog(this, "El Codigo y el Año deben ser un numero entero", "ADVERTENCIA", JOptionPane.WARNING_MESSAGE);
+            }
+        }catch(ArrayIndexOutOfBoundsException ex){
+            
         }
     }//GEN-LAST:event_jbGuardarActionPerformed
 
