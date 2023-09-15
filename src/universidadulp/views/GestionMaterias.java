@@ -202,6 +202,9 @@ public class GestionMaterias extends javax.swing.JInternalFrame {
                 //jtNombre.setText(materia.getNombre());
                 jtAnio.setText(materia.getAnioMateria()+"");
                 jrbEstado.setSelected(materia.isActivo());
+            }else {
+                
+                JOptionPane.showMessageDialog(this, "Igrese un Codigo o un Nombre", "ADVERTENCIA", JOptionPane.WARNING_MESSAGE);
             }
         }catch(NumberFormatException ex){
             
