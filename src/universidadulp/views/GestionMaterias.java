@@ -297,11 +297,14 @@ public class GestionMaterias extends javax.swing.JInternalFrame {
                 materia = new Materia(nombre, anio, estado);
                 if(matData.buscarMateria(codigo) != null){
                     
+                    codigo = matData.buscarMateria(codigo).getIdMateria();
+                    materia.setIdMateria(codigo);
                     matData.modificarMateria(materia);
                 
                 }else if(matData.buscarMateria(codigo) == null && matData.buscarNombre(nombre) == null){
                     
                     matData.guardarMateria(materia);
+                    
                 }else if(matData.buscarNombre(nombre) != null){
                     
                     codigo = matData.buscarNombre(nombre).getIdMateria();
@@ -328,14 +331,41 @@ public class GestionMaterias extends javax.swing.JInternalFrame {
     private void jbEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbEliminarActionPerformed
         
         try{
-            if(!jtCodigo.getText().isEmpty()){
+            int codigo = Integer.parseInt(jtCodigo.getText());
+            String nombre = jtNombre.getText();
+            
+            if(jtNombre.getText().isEmpty() || jtAnio.getText().isEmpty()){
+                
+                JOptionPane.showMessageDialog(this, "No se puede eliminar si hay campos vacios", "ADVERTENCIA", JOptionPane.WARNING_MESSAGE);
+            
+            }else if(matData.buscarMateria(codigo) == null && matData.buscarNombre(nombre) == null){
+                
+                JOptionPane.showMessageDialog(this, "La materia no existe", "ADVERTENCIA", JOptionPane.WARNING_MESSAGE);
+            
+            }
+            
+            if(!jtCodigo.getText().isEmpty() && jrbEstado.isSelected() && !jtNombre.getText().isEmpty() && !jtAnio.getText().isEmpty()){
                 
                 matData.eliminarMateria(Integer.parseInt(jtCodigo.getText()));
+            
+            }else if(!jtCodigo.getText().isEmpty() && !jrbEstado.isSelected() && !jtNombre.getText().isEmpty() && !jtAnio.getText().isEmpty()){
+                
+                JOptionPane.showMessageDialog(this, "La materia ya fue eliminada", "ADVERTENCIA", JOptionPane.WARNING_MESSAGE);
+                
             }
+            
+            
             
         }catch(NumberFormatException ex){
             
-            JOptionPane.showMessageDialog(this, "El Codigo debe ser un numero entero", "ADVERTENCIA", JOptionPane.WARNING_MESSAGE);
+            if(!jtCodigo.getText().isEmpty()){
+            
+                JOptionPane.showMessageDialog(this, "El Codigo debe ser un numero entero", "ADVERTENCIA", JOptionPane.WARNING_MESSAGE);
+            
+            }else {
+                
+                JOptionPane.showMessageDialog(this, "No se puede eliminar si hay campos vacios", "ADVERTENCIA", JOptionPane.WARNING_MESSAGE);
+            }
         }
     }//GEN-LAST:event_jbEliminarActionPerformed
 
