@@ -75,11 +75,13 @@ public class InscripcionesView extends javax.swing.JInternalFrame {
 
         jLabel1.setBackground(new java.awt.Color(255, 255, 255));
         jLabel1.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("Formulario de Inscripción");
         jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 10, -1, -1));
 
         jLabel2.setBackground(new java.awt.Color(255, 255, 255));
-        jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
+        jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setText("Seleccione un alumno:");
         jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 80, -1, -1));
 
@@ -96,8 +98,9 @@ public class InscripcionesView extends javax.swing.JInternalFrame {
         jPanel1.add(jComboListaAlumno, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 80, 290, -1));
 
         jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
         jLabel3.setText("Listado de Materias");
-        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 110, -1, -1));
+        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 160, -1, -1));
 
         buttonGroup1.add(jrInscriptas);
         jrInscriptas.setText("Materias inscriptas");
@@ -106,7 +109,7 @@ public class InscripcionesView extends javax.swing.JInternalFrame {
                 jrInscriptasActionPerformed(evt);
             }
         });
-        jPanel1.add(jrInscriptas, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 150, -1, -1));
+        jPanel1.add(jrInscriptas, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 120, -1, -1));
 
         buttonGroup1.add(jrNOInscriptas);
         jrNOInscriptas.setText("Materias no Inscriptas");
@@ -115,7 +118,7 @@ public class InscripcionesView extends javax.swing.JInternalFrame {
                 jrNOInscriptasActionPerformed(evt);
             }
         });
-        jPanel1.add(jrNOInscriptas, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 150, -1, -1));
+        jPanel1.add(jrNOInscriptas, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 120, -1, -1));
 
         jtablaMaterias.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -156,12 +159,13 @@ public class InscripcionesView extends javax.swing.JInternalFrame {
         });
         jPanel1.add(jbSalir, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 440, 40, 40));
 
-        jSeparator1.setBackground(new java.awt.Color(255, 255, 255));
         jSeparator1.setForeground(new java.awt.Color(255, 255, 255));
         jPanel1.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 40, 540, 10));
 
+        jLabel5.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        jLabel5.setForeground(new java.awt.Color(255, 255, 255));
         jLabel5.setText("Salir");
-        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 480, -1, -1));
+        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 480, -1, -1));
 
         jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Fondo.jpg"))); // NOI18N
         jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 690, 520));
