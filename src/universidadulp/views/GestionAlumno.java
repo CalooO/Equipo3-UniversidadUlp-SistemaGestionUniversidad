@@ -17,6 +17,7 @@ import universidadulp.accesoADatos.AlumnoData;
  */
 public class GestionAlumno extends javax.swing.JInternalFrame {
     AlumnoData ad = new AlumnoData();
+    int resp;
     /**
      * Creates new form GestionAlumno
      */
@@ -246,9 +247,14 @@ public class GestionAlumno extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
         try{
             if(!jtDni.getText().isEmpty()){
-                ad.elimarAlumno(Integer.parseInt(jtDni.getText()));
+                // Mensaje para confirmar 
+                 resp = JOptionPane.showConfirmDialog(this, "¿Estas seguro que deseas eliminar el alumno?", "", 
+                         JOptionPane.YES_NO_OPTION, JOptionPane.PLAIN_MESSAGE);
+                if(resp==0){
+                    ad.elimarAlumno(Integer.parseInt(jtDni.getText()));
+                }
             }else{
-                JOptionPane.showMessageDialog(this, "El campo dni esta vacio", "ADVERTENCIA", JOptionPane.WARNING_MESSAGE);
+                JOptionPane.showConfirmDialog(this, "El campo dni esta vacio", "ADVERTENCIA", JOptionPane.WARNING_MESSAGE);
             }
         }catch(NumberFormatException e){
             JOptionPane.showMessageDialog(this, "El campo dni debe ser de formato numerico", "ADVERTENCIA", JOptionPane.WARNING_MESSAGE);
