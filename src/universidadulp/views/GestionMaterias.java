@@ -8,6 +8,7 @@ import universidadulp.accesoADatos.MateriaData;
 public class GestionMaterias extends javax.swing.JInternalFrame {
 
     MateriaData matData = new MateriaData();
+    int resp;
     
     public GestionMaterias() {
         initComponents();
@@ -123,28 +124,28 @@ public class GestionMaterias extends javax.swing.JInternalFrame {
         });
         jPanel1.add(jbSalir, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 410, 40, 40));
 
-        jLabel6.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        jLabel6.setForeground(new java.awt.Color(225, 225, 225));
+        jLabel6.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        jLabel6.setForeground(new java.awt.Color(255, 255, 255));
         jLabel6.setText("Buscar");
         jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 160, 40, -1));
 
-        jLabel7.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        jLabel7.setForeground(new java.awt.Color(225, 225, 225));
+        jLabel7.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        jLabel7.setForeground(new java.awt.Color(255, 255, 255));
         jLabel7.setText("Nuevo");
         jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 450, -1, -1));
 
-        jLabel8.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        jLabel8.setForeground(new java.awt.Color(225, 225, 225));
+        jLabel8.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        jLabel8.setForeground(new java.awt.Color(255, 255, 255));
         jLabel8.setText("Guardar");
-        jPanel1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 450, 50, -1));
+        jPanel1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 450, -1, -1));
 
-        jLabel9.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        jLabel9.setForeground(new java.awt.Color(225, 225, 225));
+        jLabel9.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        jLabel9.setForeground(new java.awt.Color(255, 255, 255));
         jLabel9.setText("Eliminar");
         jPanel1.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 450, -1, -1));
 
-        jLabel10.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        jLabel10.setForeground(new java.awt.Color(225, 225, 225));
+        jLabel10.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        jLabel10.setForeground(new java.awt.Color(255, 255, 255));
         jLabel10.setText("Salir");
         jPanel1.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 450, -1, -1));
 
@@ -348,8 +349,6 @@ public class GestionMaterias extends javax.swing.JInternalFrame {
                 JOptionPane.showMessageDialog(this, "La materia ya fue eliminada", "ADVERTENCIA", JOptionPane.WARNING_MESSAGE);
                 
             }
-            
-            
             
         }catch(NumberFormatException ex){
             
