@@ -283,7 +283,11 @@ public class GestionAlumno extends javax.swing.JInternalFrame {
                 if(ad.buscarDni(dni)==null){
                     ad.guardarAlumno(alu);
                 }else{
+                    resp = JOptionPane.showConfirmDialog(this, "¿Estas seguro que deseas modificar el alumno?", "", 
+                         JOptionPane.YES_NO_OPTION, JOptionPane.PLAIN_MESSAGE);
+                    if(resp==0){
                     ad.modificarAlumno(alu);
+                    }
                 }
             }else{
                 JOptionPane.showMessageDialog(this, "Quedan campos vacios", "ADVERTENCIA", JOptionPane.WARNING_MESSAGE);
