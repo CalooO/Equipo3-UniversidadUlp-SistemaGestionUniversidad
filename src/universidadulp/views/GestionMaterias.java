@@ -33,6 +33,11 @@ public class GestionMaterias extends javax.swing.JInternalFrame {
         jbEliminar = new javax.swing.JButton();
         jbGuardar = new javax.swing.JButton();
         jbSalir = new javax.swing.JButton();
+        jLabel6 = new javax.swing.JLabel();
+        jLabel7 = new javax.swing.JLabel();
+        jLabel8 = new javax.swing.JLabel();
+        jLabel9 = new javax.swing.JLabel();
+        jLabel10 = new javax.swing.JLabel();
         Fondo = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(0, 38, 113));
@@ -41,7 +46,7 @@ public class GestionMaterias extends javax.swing.JInternalFrame {
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jSeparator1.setForeground(new java.awt.Color(255, 255, 255));
-        jPanel1.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 40, 550, 30));
+        jPanel1.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 40, 440, 30));
 
         jLabel1.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
@@ -51,32 +56,32 @@ public class GestionMaterias extends javax.swing.JInternalFrame {
         jLabel2.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setText("Codigo");
-        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 140, -1, -1));
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 140, -1, -1));
 
         jLabel3.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
         jLabel3.setText("Nombre");
-        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 200, -1, -1));
+        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 200, -1, -1));
 
         jLabel4.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(255, 255, 255));
         jLabel4.setText("Año");
-        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 260, -1, -1));
+        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 260, -1, -1));
 
         jLabel5.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(255, 255, 255));
         jLabel5.setText("Estado");
-        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 320, -1, -1));
-        jPanel1.add(jtCodigo, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 140, 240, -1));
-        jPanel1.add(jtNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 200, 240, -1));
-        jPanel1.add(jtAnio, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 260, 240, -1));
+        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 320, -1, -1));
+        jPanel1.add(jtCodigo, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 140, 240, -1));
+        jPanel1.add(jtNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 200, 330, -1));
+        jPanel1.add(jtAnio, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 260, 140, -1));
 
         jrbEstado.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jrbEstadoActionPerformed(evt);
             }
         });
-        jPanel1.add(jrbEstado, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 310, -1, -1));
+        jPanel1.add(jrbEstado, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 320, -1, -1));
 
         jbBuscar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Buscar.jpg"))); // NOI18N
         jbBuscar.addActionListener(new java.awt.event.ActionListener() {
@@ -84,7 +89,7 @@ public class GestionMaterias extends javax.swing.JInternalFrame {
                 jbBuscarActionPerformed(evt);
             }
         });
-        jPanel1.add(jbBuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 450, 40, 40));
+        jPanel1.add(jbBuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 120, 40, 40));
 
         jbNuevo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Nuevo.jpg"))); // NOI18N
         jbNuevo.addActionListener(new java.awt.event.ActionListener() {
@@ -92,7 +97,7 @@ public class GestionMaterias extends javax.swing.JInternalFrame {
                 jbNuevoActionPerformed(evt);
             }
         });
-        jPanel1.add(jbNuevo, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 450, 40, 40));
+        jPanel1.add(jbNuevo, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 410, 40, 40));
 
         jbEliminar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Eliminar.jpg"))); // NOI18N
         jbEliminar.addActionListener(new java.awt.event.ActionListener() {
@@ -100,7 +105,7 @@ public class GestionMaterias extends javax.swing.JInternalFrame {
                 jbEliminarActionPerformed(evt);
             }
         });
-        jPanel1.add(jbEliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 450, 40, 40));
+        jPanel1.add(jbEliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 410, 40, 40));
 
         jbGuardar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Guardar.jpg"))); // NOI18N
         jbGuardar.addActionListener(new java.awt.event.ActionListener() {
@@ -108,7 +113,7 @@ public class GestionMaterias extends javax.swing.JInternalFrame {
                 jbGuardarActionPerformed(evt);
             }
         });
-        jPanel1.add(jbGuardar, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 450, 40, 40));
+        jPanel1.add(jbGuardar, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 410, 40, 40));
 
         jbSalir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Salir.jpg"))); // NOI18N
         jbSalir.addActionListener(new java.awt.event.ActionListener() {
@@ -116,7 +121,32 @@ public class GestionMaterias extends javax.swing.JInternalFrame {
                 jbSalirActionPerformed(evt);
             }
         });
-        jPanel1.add(jbSalir, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 390, 40, 40));
+        jPanel1.add(jbSalir, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 410, 40, 40));
+
+        jLabel6.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jLabel6.setForeground(new java.awt.Color(225, 225, 225));
+        jLabel6.setText("Buscar");
+        jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 160, 40, -1));
+
+        jLabel7.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jLabel7.setForeground(new java.awt.Color(225, 225, 225));
+        jLabel7.setText("Nuevo");
+        jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 450, -1, -1));
+
+        jLabel8.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jLabel8.setForeground(new java.awt.Color(225, 225, 225));
+        jLabel8.setText("Guardar");
+        jPanel1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 450, 50, -1));
+
+        jLabel9.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jLabel9.setForeground(new java.awt.Color(225, 225, 225));
+        jLabel9.setText("Eliminar");
+        jPanel1.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 450, -1, -1));
+
+        jLabel10.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jLabel10.setForeground(new java.awt.Color(225, 225, 225));
+        jLabel10.setText("Salir");
+        jPanel1.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 450, -1, -1));
 
         Fondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Fondo.jpg"))); // NOI18N
         jPanel1.add(Fondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 690, 520));
@@ -341,10 +371,15 @@ public class GestionMaterias extends javax.swing.JInternalFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel Fondo;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JButton jbBuscar;
