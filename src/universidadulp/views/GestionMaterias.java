@@ -176,6 +176,10 @@ public class GestionMaterias extends javax.swing.JInternalFrame {
 
     private void jbSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbSalirActionPerformed
         
+        resp = JOptionPane.showConfirmDialog(this, "¿Esta seguro que desea salir?", "", 
+                         JOptionPane.YES_NO_OPTION, JOptionPane.PLAIN_MESSAGE);
+        
+        if(resp == 0)
         this.dispose();
     }//GEN-LAST:event_jbSalirActionPerformed
 
@@ -258,13 +262,20 @@ public class GestionMaterias extends javax.swing.JInternalFrame {
                 materia = new Materia(nombre, anio, estado);
                 if(matData.buscarNombre(nombre)==null){
                     
+                    resp = JOptionPane.showConfirmDialog(this, "¿Esta seguro que desea guardar esta materia?", "", 
+                         JOptionPane.YES_NO_OPTION, JOptionPane.PLAIN_MESSAGE);
                     
+                    if(resp == 0)
                     matData.guardarMateria(materia);
                 
                 }else{
                     
                     codigo = matData.buscarNombre(nombre).getIdMateria();
                     materia.setIdMateria(codigo);
+                    resp = JOptionPane.showConfirmDialog(this, "¿Esta seguro que desea modificar esta materia?", "", 
+                         JOptionPane.YES_NO_OPTION, JOptionPane.PLAIN_MESSAGE);
+                    
+                    if(resp == 0)
                     matData.modificarMateria(materia);
                 }
             }else {
@@ -295,16 +306,30 @@ public class GestionMaterias extends javax.swing.JInternalFrame {
                     
                     codigo = matData.buscarMateria(codigo).getIdMateria();
                     materia.setIdMateria(codigo);
+                    
+                    resp = JOptionPane.showConfirmDialog(this, "¿Esta seguro que desea modificar esta materia?", "", 
+                         JOptionPane.YES_NO_OPTION, JOptionPane.PLAIN_MESSAGE);
+                    
+                    if(resp == 0)
                     matData.modificarMateria(materia);
                 
                 }else if(matData.buscarMateria(codigo) == null && matData.buscarNombre(nombre) == null){
                     
+                    resp = JOptionPane.showConfirmDialog(this, "¿Esta seguro que desea guardar esta materia?", "", 
+                         JOptionPane.YES_NO_OPTION, JOptionPane.PLAIN_MESSAGE);
+                    
+                    if(resp == 0)
                     matData.guardarMateria(materia);
                     
                 }else if(matData.buscarNombre(nombre) != null){
                     
                     codigo = matData.buscarNombre(nombre).getIdMateria();
                     materia.setIdMateria(codigo);
+                    
+                    resp = JOptionPane.showConfirmDialog(this, "¿Esta seguro que desea modificar esta materia?", "", 
+                         JOptionPane.YES_NO_OPTION, JOptionPane.PLAIN_MESSAGE);
+                    
+                    if(resp == 0)
                     matData.modificarMateria(materia);
                 }
             }
@@ -342,8 +367,15 @@ public class GestionMaterias extends javax.swing.JInternalFrame {
             
             if(!jtCodigo.getText().isEmpty() && jrbEstado.isSelected() && !jtNombre.getText().isEmpty() && !jtAnio.getText().isEmpty()){
                 
-                matData.eliminarMateria(Integer.parseInt(jtCodigo.getText()));
-            
+                resp = JOptionPane.showConfirmDialog(this, "¿Esta seguro que desea eliminar esta materia?", "", 
+                         JOptionPane.YES_NO_OPTION, JOptionPane.PLAIN_MESSAGE);
+                
+                if(resp == 0){
+                    
+                    matData.eliminarMateria(Integer.parseInt(jtCodigo.getText()));
+                    jrbEstado.setSelected(false);
+                }
+                
             }else if(!jtCodigo.getText().isEmpty() && !jrbEstado.isSelected() && !jtNombre.getText().isEmpty() && !jtAnio.getText().isEmpty()){
                 
                 JOptionPane.showMessageDialog(this, "La materia ya fue eliminada", "ADVERTENCIA", JOptionPane.WARNING_MESSAGE);
