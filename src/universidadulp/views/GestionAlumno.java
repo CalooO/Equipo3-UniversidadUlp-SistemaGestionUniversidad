@@ -101,7 +101,7 @@ public class GestionAlumno extends javax.swing.JInternalFrame {
         jLabel6.setForeground(new java.awt.Color(255, 255, 255));
         jLabel6.setText("Fecha de Nacimiento:");
         jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 370, -1, -1));
-        jPanel1.add(jtDni, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 170, 250, -1));
+        jPanel1.add(jtDni, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 170, 180, -1));
         jPanel1.add(jtApellido, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 220, 250, -1));
         jPanel1.add(jtNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 270, 250, -1));
         jPanel1.add(jrbEstado, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 320, -1, -1));
@@ -113,7 +113,7 @@ public class GestionAlumno extends javax.swing.JInternalFrame {
                 jbBuscarActionPerformed(evt);
             }
         });
-        jPanel1.add(jbBuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 150, 40, 40));
+        jPanel1.add(jbBuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 130, 40, 40));
 
         jbSalir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Salir.jpg"))); // NOI18N
         jbSalir.setMinimumSize(new java.awt.Dimension(30, 15));
@@ -182,7 +182,7 @@ public class GestionAlumno extends javax.swing.JInternalFrame {
         jLabel8.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jLabel8.setForeground(new java.awt.Color(255, 255, 255));
         jLabel8.setText("Buscar");
-        jPanel1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 190, -1, -1));
+        jPanel1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 170, -1, -1));
 
         jLabel12.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jLabel12.setForeground(new java.awt.Color(255, 255, 255));
@@ -194,7 +194,7 @@ public class GestionAlumno extends javax.swing.JInternalFrame {
         jLabel13.setForeground(new java.awt.Color(255, 255, 255));
         jLabel13.setText("Documento:");
         jPanel1.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 170, -1, -1));
-        jPanel1.add(jtId, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 120, 250, -1));
+        jPanel1.add(jtId, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 120, 180, -1));
 
         jSeparator1.setForeground(new java.awt.Color(255, 255, 255));
         jPanel1.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 42, 530, 30));
