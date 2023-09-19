@@ -86,7 +86,7 @@ public class AlumnoData {
     }
     
     public Alumno buscarAlumnoPorId(int id){
-        String sql="select dni, apellido, nombre, fechaNac from alumno where id=?";
+        String sql="select idAlumno, dni, apellido, nombre, fechaNac, estado from alumno where idAlumno=?";
         Alumno alumno=null;
         try {
             PreparedStatement ps=con.prepareStatement(sql);
@@ -102,14 +102,13 @@ public class AlumnoData {
                 alumno.setActivo(rs.getBoolean("estado"));
                 
             }else{
-                JOptionPane.showMessageDialog(null,"No existe ese alumno con ese id ");
+                JOptionPane.showMessageDialog(null,"No existe un alumno con ese id ");
          
             }
             ps.close();
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null,"Error al acceder a la tabla alumno "+ex.getMessage());
         } catch(NullPointerException e){
-            
         }
         return alumno;
     }
@@ -131,12 +130,12 @@ public class AlumnoData {
                 alumno.setActivo(rs.getBoolean("estado"));
                 
             }else{
-                JOptionPane.showMessageDialog(null,"No existe ese alumno con ese id ");
-         
+                JOptionPane.showMessageDialog(null,"No existe un alumno con ese dni ");
             }
             ps.close();
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null,"Error al acceder a la tabla alumno "+ex.getMessage());
+        } catch(NullPointerException e){
         }
         
         return alumno;

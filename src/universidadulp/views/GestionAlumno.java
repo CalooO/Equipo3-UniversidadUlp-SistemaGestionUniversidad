@@ -56,6 +56,8 @@ public class GestionAlumno extends javax.swing.JInternalFrame {
         jLabel11 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
         jLabel12 = new javax.swing.JLabel();
+        jLabel13 = new javax.swing.JLabel();
+        jtId = new javax.swing.JTextField();
         jSeparator1 = new javax.swing.JSeparator();
         jLabel7 = new javax.swing.JLabel();
 
@@ -75,8 +77,8 @@ public class GestionAlumno extends javax.swing.JInternalFrame {
         jLabel2.setBackground(new java.awt.Color(255, 255, 255));
         jLabel2.setFont(new java.awt.Font("Dialog", 1, 16)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel2.setText("Documento:");
-        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 170, -1, -1));
+        jLabel2.setText("Id del alumno:");
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 120, -1, -1));
 
         jLabel3.setBackground(new java.awt.Color(153, 255, 255));
         jLabel3.setFont(new java.awt.Font("Dialog", 1, 16)); // NOI18N
@@ -187,6 +189,13 @@ public class GestionAlumno extends javax.swing.JInternalFrame {
         jLabel12.setText("Eliminar");
         jPanel1.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 470, -1, -1));
 
+        jLabel13.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel13.setFont(new java.awt.Font("Dialog", 1, 16)); // NOI18N
+        jLabel13.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel13.setText("Documento:");
+        jPanel1.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 170, -1, -1));
+        jPanel1.add(jtId, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 120, 250, -1));
+
         jSeparator1.setForeground(new java.awt.Color(255, 255, 255));
         jPanel1.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 42, 530, 30));
 
@@ -222,17 +231,28 @@ public class GestionAlumno extends javax.swing.JInternalFrame {
     private void jbBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbBuscarActionPerformed
         // TODO add your handling code here:
         try{
-            if(!jtDni.getText().isEmpty()){
+            if(!jtId.getText().isEmpty()){
+                Alumno alu = new Alumno();
+                alu = ad.buscarAlumnoPorId(Integer.parseInt(jtId.getText()));
+                if(alu.getNombre()!=null && alu.getApellido()!=null){
+                    jtDni.setText(alu.getDni()+"");
+                    jtApellido.setText(alu.getApellido());
+                    jtNombre.setText(alu.getNombre());
+                    jrbEstado.setSelected(alu.isActivo());
+                    jdFecha.setDate(Date.from(alu.getFechaNacimiento().atStartOfDay().atZone(ZoneId.systemDefault()).toInstant()));
+                }
+            }else if(!jtDni.getText().isEmpty()){
                 Alumno alu = new Alumno();
                 alu = ad.buscarAlumnoPorDni(Integer.parseInt(jtDni.getText()));
                 if(alu.getNombre()!=null && alu.getApellido()!=null){
-                jtApellido.setText(alu.getApellido());
-                jtNombre.setText(alu.getNombre());
-                jrbEstado.setSelected(alu.isActivo());
-                jdFecha.setDate(Date.from(alu.getFechaNacimiento().atStartOfDay().atZone(ZoneId.systemDefault()).toInstant()));
+                    jtId.setText(alu.getIdAlumno()+"");
+                    jtApellido.setText(alu.getApellido());
+                    jtNombre.setText(alu.getNombre());
+                    jrbEstado.setSelected(alu.isActivo());
+                    jdFecha.setDate(Date.from(alu.getFechaNacimiento().atStartOfDay().atZone(ZoneId.systemDefault()).toInstant()));
                 }
             }else{
-                JOptionPane.showMessageDialog(this, "El campo dni esta vacio", "ADVERTENCIA", JOptionPane.WARNING_MESSAGE);
+                JOptionPane.showMessageDialog(this, "El campo dni y Id estan vacios, por favor llenar uno para buscar", "ADVERTENCIA", JOptionPane.WARNING_MESSAGE);
             }
         }catch(NumberFormatException e){
             JOptionPane.showMessageDialog(this, "El campo dni debe ser de formato numerico", "ADVERTENCIA", JOptionPane.WARNING_MESSAGE);
@@ -271,8 +291,9 @@ public class GestionAlumno extends javax.swing.JInternalFrame {
         boolean est;
         LocalDate fecha = null;
         try{
+            if(jtId.getText().isEmpty()){
             if(!jtDni.getText().isEmpty() || !jtApellido.getText().isEmpty() || !jtNombre.getText().isEmpty() ||
-                jdFecha.getDate()!=null){
+                jdFecha.getDate()!=null && jtId.getText().isEmpty()){
                 int dni = Integer.parseInt(jtDni.getText());
                 String ape = jtApellido.getText();
                 String nom = jtNombre.getText();
@@ -295,14 +316,16 @@ public class GestionAlumno extends javax.swing.JInternalFrame {
                     }
                 }
             }else{
-                JOptionPane.showMessageDialog(this, "Quedan campos vacios", "ADVERTENCIA", JOptionPane.WARNING_MESSAGE);
+                    JOptionPane.showMessageDialog(this, "Quedan campos vacios, llene todos excepto el Id", "ADVERTENCIA", JOptionPane.WARNING_MESSAGE);
+                }
+                
+            }else{
+                JOptionPane.showMessageDialog(this, "El id se genera automaticamente", "ADVERTENCIA", JOptionPane.WARNING_MESSAGE);
+                    jtId.setText("");
             }
         }catch(NumberFormatException e){
             if(!jtDni.getText().isEmpty()){
                 JOptionPane.showMessageDialog(this, "El campo dni debe ser de formato numerico y sin puntos", "ADVERTENCIA", JOptionPane.WARNING_MESSAGE);
-                jtDni.setText("");
-            }else{
-                JOptionPane.showMessageDialog(this, "Quedan campos vacios", "ADVERTENCIA", JOptionPane.WARNING_MESSAGE);
                 jtDni.setText("");
             }
         }catch(NullPointerException e){
@@ -326,6 +349,7 @@ public class GestionAlumno extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -345,6 +369,7 @@ public class GestionAlumno extends javax.swing.JInternalFrame {
     private javax.swing.JRadioButton jrbEstado;
     private javax.swing.JTextField jtApellido;
     private javax.swing.JTextField jtDni;
+    private javax.swing.JTextField jtId;
     private javax.swing.JTextField jtNombre;
     // End of variables declaration//GEN-END:variables
 }
