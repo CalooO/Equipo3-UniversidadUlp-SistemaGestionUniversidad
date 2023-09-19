@@ -234,7 +234,7 @@ public class GestionAlumno extends javax.swing.JInternalFrame {
             if(!jtId.getText().isEmpty()){
                 Alumno alu = new Alumno();
                 alu = ad.buscarAlumnoPorId(Integer.parseInt(jtId.getText()));
-                if(alu.getNombre()!=null && alu.getApellido()!=null){
+                if(alu.getNombre()!=null){
                     jtDni.setText(alu.getDni()+"");
                     jtApellido.setText(alu.getApellido());
                     jtNombre.setText(alu.getNombre());
@@ -244,7 +244,7 @@ public class GestionAlumno extends javax.swing.JInternalFrame {
             }else if(!jtDni.getText().isEmpty()){
                 Alumno alu = new Alumno();
                 alu = ad.buscarAlumnoPorDni(Integer.parseInt(jtDni.getText()));
-                if(alu.getNombre()!=null && alu.getApellido()!=null){
+                if(alu.getNombre()!=null){
                     jtId.setText(alu.getIdAlumno()+"");
                     jtApellido.setText(alu.getApellido());
                     jtNombre.setText(alu.getNombre());
@@ -270,7 +270,19 @@ public class GestionAlumno extends javax.swing.JInternalFrame {
     private void jbEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbEliminarActionPerformed
         // TODO add your handling code here:
         try{
-            if(!jtDni.getText().isEmpty()){
+            if(!jtId.getText().isEmpty()){
+                Alumno alu = new Alumno();
+                alu = ad.buscarAlumnoPorId(Integer.parseInt(jtId.getText()));
+                if(alu.getNombre()!=null){
+                    resp = JOptionPane.showConfirmDialog(this, "¿Estas seguro que deseas eliminar el alumno?", "", 
+                         JOptionPane.YES_NO_OPTION, JOptionPane.PLAIN_MESSAGE);
+                if(resp==0){
+                    jrbEstado.setSelected(false);
+                    ad.elimarAlumno(alu.getDni());
+                }
+                }
+            }else{
+                if(!jtDni.getText().isEmpty()){
                 // Mensaje para confirmar 
                  resp = JOptionPane.showConfirmDialog(this, "¿Estas seguro que deseas eliminar el alumno?", "", 
                          JOptionPane.YES_NO_OPTION, JOptionPane.PLAIN_MESSAGE);
@@ -279,8 +291,10 @@ public class GestionAlumno extends javax.swing.JInternalFrame {
                     ad.elimarAlumno(Integer.parseInt(jtDni.getText()));
                 }
             }else{
-                JOptionPane.showConfirmDialog(this, "El campo dni esta vacio", "ADVERTENCIA", JOptionPane.WARNING_MESSAGE);
+                JOptionPane.showConfirmDialog(this, "El campo dni/id esta vacio", "ADVERTENCIA", JOptionPane.WARNING_MESSAGE);
             }
+            }
+            
         }catch(NumberFormatException e){
             JOptionPane.showMessageDialog(this, "El campo dni debe ser de formato numerico", "ADVERTENCIA", JOptionPane.WARNING_MESSAGE);
         }
@@ -336,6 +350,7 @@ public class GestionAlumno extends javax.swing.JInternalFrame {
 
     private void jbNuevoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbNuevoActionPerformed
         // TODO add your handling code here:
+        jtId.setText("");
         jtDni.setText("");
         jtApellido.setText("");
         jtNombre.setText("");
