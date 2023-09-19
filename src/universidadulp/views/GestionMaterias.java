@@ -176,7 +176,7 @@ public class GestionMaterias extends javax.swing.JInternalFrame {
 
     private void jbSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbSalirActionPerformed
         
-        resp = JOptionPane.showConfirmDialog(this, "¿Esta seguro que desea salir?", "", 
+        resp = JOptionPane.showConfirmDialog(this, "¿Esta seguro que desea salir?", "Salir", 
                          JOptionPane.YES_NO_OPTION, JOptionPane.PLAIN_MESSAGE);
         
         if(resp == 0)
@@ -262,7 +262,7 @@ public class GestionMaterias extends javax.swing.JInternalFrame {
                 materia = new Materia(nombre, anio, estado);
                 if(matData.buscarNombre(nombre)==null){
                     
-                    resp = JOptionPane.showConfirmDialog(this, "¿Esta seguro que desea guardar esta materia?", "", 
+                    resp = JOptionPane.showConfirmDialog(this, "¿Esta seguro que desea guardar esta materia?", "Guardar", 
                          JOptionPane.YES_NO_OPTION, JOptionPane.PLAIN_MESSAGE);
                     
                     if(resp == 0)
@@ -272,7 +272,7 @@ public class GestionMaterias extends javax.swing.JInternalFrame {
                     
                     codigo = matData.buscarNombre(nombre).getIdMateria();
                     materia.setIdMateria(codigo);
-                    resp = JOptionPane.showConfirmDialog(this, "¿Esta seguro que desea modificar esta materia?", "", 
+                    resp = JOptionPane.showConfirmDialog(this, "¿Esta seguro que desea modificar esta materia?", "Modificar", 
                          JOptionPane.YES_NO_OPTION, JOptionPane.PLAIN_MESSAGE);
                     
                     if(resp == 0)
@@ -307,7 +307,7 @@ public class GestionMaterias extends javax.swing.JInternalFrame {
                     codigo = matData.buscarMateria(codigo).getIdMateria();
                     materia.setIdMateria(codigo);
                     
-                    resp = JOptionPane.showConfirmDialog(this, "¿Esta seguro que desea modificar esta materia?", "", 
+                    resp = JOptionPane.showConfirmDialog(this, "¿Esta seguro que desea modificar esta materia?", "Modificar", 
                          JOptionPane.YES_NO_OPTION, JOptionPane.PLAIN_MESSAGE);
                     
                     if(resp == 0)
@@ -315,7 +315,7 @@ public class GestionMaterias extends javax.swing.JInternalFrame {
                 
                 }else if(matData.buscarMateria(codigo) == null && matData.buscarNombre(nombre) == null){
                     
-                    resp = JOptionPane.showConfirmDialog(this, "¿Esta seguro que desea guardar esta materia?", "", 
+                    resp = JOptionPane.showConfirmDialog(this, "¿Esta seguro que desea guardar esta materia?", "Guardar", 
                          JOptionPane.YES_NO_OPTION, JOptionPane.PLAIN_MESSAGE);
                     
                     if(resp == 0)
@@ -326,7 +326,7 @@ public class GestionMaterias extends javax.swing.JInternalFrame {
                     codigo = matData.buscarNombre(nombre).getIdMateria();
                     materia.setIdMateria(codigo);
                     
-                    resp = JOptionPane.showConfirmDialog(this, "¿Esta seguro que desea modificar esta materia?", "", 
+                    resp = JOptionPane.showConfirmDialog(this, "¿Esta seguro que desea modificar esta materia?", "Modificar", 
                          JOptionPane.YES_NO_OPTION, JOptionPane.PLAIN_MESSAGE);
                     
                     if(resp == 0)
@@ -367,13 +367,13 @@ public class GestionMaterias extends javax.swing.JInternalFrame {
             
             if(!jtCodigo.getText().isEmpty() && jrbEstado.isSelected() && !jtNombre.getText().isEmpty() && !jtAnio.getText().isEmpty()){
                 
-                resp = JOptionPane.showConfirmDialog(this, "¿Esta seguro que desea eliminar esta materia?", "", 
+                resp = JOptionPane.showConfirmDialog(this, "¿Esta seguro que desea eliminar esta materia?", "Eliminar", 
                          JOptionPane.YES_NO_OPTION, JOptionPane.PLAIN_MESSAGE);
                 
                 if(resp == 0){
                     
-                    matData.eliminarMateria(Integer.parseInt(jtCodigo.getText()));
                     jrbEstado.setSelected(false);
+                    matData.eliminarMateria(Integer.parseInt(jtCodigo.getText()));
                 }
                 
             }else if(!jtCodigo.getText().isEmpty() && !jrbEstado.isSelected() && !jtNombre.getText().isEmpty() && !jtAnio.getText().isEmpty()){

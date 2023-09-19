@@ -255,6 +255,7 @@ public class GestionAlumno extends javax.swing.JInternalFrame {
                  resp = JOptionPane.showConfirmDialog(this, "¿Estas seguro que deseas eliminar el alumno?", "", 
                          JOptionPane.YES_NO_OPTION, JOptionPane.PLAIN_MESSAGE);
                 if(resp==0){
+                    jrbEstado.setSelected(false);
                     ad.elimarAlumno(Integer.parseInt(jtDni.getText()));
                 }
             }else{
