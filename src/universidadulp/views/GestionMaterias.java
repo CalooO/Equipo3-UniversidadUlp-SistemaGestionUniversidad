@@ -73,16 +73,16 @@ public class GestionMaterias extends javax.swing.JInternalFrame {
         jLabel5.setForeground(new java.awt.Color(255, 255, 255));
         jLabel5.setText("Estado");
         jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 320, -1, -1));
-        jPanel1.add(jtCodigo, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 140, 240, -1));
-        jPanel1.add(jtNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 200, 240, -1));
-        jPanel1.add(jtAnio, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 260, 140, -1));
+        jPanel1.add(jtCodigo, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 140, 280, -1));
+        jPanel1.add(jtNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 200, 280, -1));
+        jPanel1.add(jtAnio, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 260, 160, -1));
 
         jrbEstado.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jrbEstadoActionPerformed(evt);
             }
         });
-        jPanel1.add(jrbEstado, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 320, -1, -1));
+        jPanel1.add(jrbEstado, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 320, -1, -1));
 
         jbBuscar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Buscar.jpg"))); // NOI18N
         jbBuscar.addActionListener(new java.awt.event.ActionListener() {
@@ -90,7 +90,7 @@ public class GestionMaterias extends javax.swing.JInternalFrame {
                 jbBuscarActionPerformed(evt);
             }
         });
-        jPanel1.add(jbBuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 160, 40, 40));
+        jPanel1.add(jbBuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 160, 40, 40));
 
         jbNuevo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Nuevo.jpg"))); // NOI18N
         jbNuevo.addActionListener(new java.awt.event.ActionListener() {
@@ -127,7 +127,7 @@ public class GestionMaterias extends javax.swing.JInternalFrame {
         jLabel6.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(255, 255, 255));
         jLabel6.setText("Buscar");
-        jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 200, 40, -1));
+        jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 200, 40, -1));
 
         jLabel7.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(255, 255, 255));
