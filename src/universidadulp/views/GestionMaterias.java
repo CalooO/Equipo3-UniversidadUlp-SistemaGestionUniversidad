@@ -221,7 +221,7 @@ public class GestionMaterias extends javax.swing.JInternalFrame {
         try{
             if(jtNombre.getText().isEmpty() || jtAnio.getText().isEmpty()){
                 
-                JOptionPane.showMessageDialog(this, "Los campos no deben estar vacios", "ADVERTENCIA", JOptionPane.WARNING_MESSAGE);
+                JOptionPane.showMessageDialog(this, "Hay campos vacios", "ADVERTENCIA", JOptionPane.WARNING_MESSAGE);
             }
             
             if(Integer.parseInt(jtAnio.getText()) < 1){
@@ -339,11 +339,11 @@ public class GestionMaterias extends javax.swing.JInternalFrame {
                 
             JOptionPane.showMessageDialog(this, "El Codigo y el Año deben ser un numeros enteros", "ADVERTENCIA", JOptionPane.WARNING_MESSAGE);
             
-            if(jtCodigo.getText().isEmpty() || jtAnio.getText().isEmpty() || jtNombre.getText().isEmpty()){
-                
-                JOptionPane.showMessageDialog(this, "Hay campos vacios", "ADVERTENCIA", JOptionPane.WARNING_MESSAGE);
-            
-            }
+//            if(jtCodigo.getText().isEmpty() || jtAnio.getText().isEmpty() || jtNombre.getText().isEmpty()){
+//                
+//                JOptionPane.showMessageDialog(this, "Hay campos vacios", "ADVERTENCIA", JOptionPane.WARNING_MESSAGE);
+//            
+//            }
         }catch(ArrayIndexOutOfBoundsException ex){
             
         }
@@ -365,7 +365,7 @@ public class GestionMaterias extends javax.swing.JInternalFrame {
             
             }
             
-            if(!jtCodigo.getText().isEmpty() && jrbEstado.isSelected() && !jtNombre.getText().isEmpty() && !jtAnio.getText().isEmpty()){
+            if(/*!jtCodigo.getText().isEmpty() && */jrbEstado.isSelected() && !jtNombre.getText().isEmpty() && !jtAnio.getText().isEmpty()){
                 
                 resp = JOptionPane.showConfirmDialog(this, "¿Esta seguro que desea eliminar esta materia?", "Eliminar", 
                          JOptionPane.YES_NO_OPTION, JOptionPane.PLAIN_MESSAGE);
@@ -376,7 +376,7 @@ public class GestionMaterias extends javax.swing.JInternalFrame {
                     matData.eliminarMateria(Integer.parseInt(jtCodigo.getText()));
                 }
                 
-            }else if(!jtCodigo.getText().isEmpty() && !jrbEstado.isSelected() && !jtNombre.getText().isEmpty() && !jtAnio.getText().isEmpty()){
+            }else if(/*!jtCodigo.getText().isEmpty() && */!jrbEstado.isSelected() && !jtNombre.getText().isEmpty() && !jtAnio.getText().isEmpty()){
                 
                 JOptionPane.showMessageDialog(this, "La materia ya fue eliminada", "ADVERTENCIA", JOptionPane.WARNING_MESSAGE);
                 
@@ -388,10 +388,25 @@ public class GestionMaterias extends javax.swing.JInternalFrame {
             
                 JOptionPane.showMessageDialog(this, "El Codigo debe ser un numero entero", "ADVERTENCIA", JOptionPane.WARNING_MESSAGE);
             
-            }else {
+            }else if(jrbEstado.isSelected() && !jtNombre.getText().isEmpty() && !jtAnio.getText().isEmpty()){
+                
+                try{
+                    resp = JOptionPane.showConfirmDialog(this, "¿Esta seguro que desea eliminar esta materia?", "Eliminar", 
+                             JOptionPane.YES_NO_OPTION, JOptionPane.PLAIN_MESSAGE);
+
+                    if(resp == 0){
+
+                        jrbEstado.setSelected(false);
+                        matData.eliminarMateria(Integer.parseInt(jtCodigo.getText()));
+                    }
+                }catch(NumberFormatException e){
+                    
+                }
+            }
+            /*else {
                 
                 JOptionPane.showMessageDialog(this, "No se puede eliminar si hay campos vacios", "ADVERTENCIA", JOptionPane.WARNING_MESSAGE);
-            }
+            }*/
         }
     }//GEN-LAST:event_jbEliminarActionPerformed
 
