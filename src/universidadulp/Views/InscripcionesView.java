@@ -270,11 +270,15 @@ public class InscripcionesView extends javax.swing.JInternalFrame {
         InscripcionData inscripData = new InscripcionData();
 
         int filaS = jtablaMaterias.getSelectedRow();
-        int idMateria = Integer.parseInt(jtablaMaterias.getValueAt(filaS, 0).toString());
-        int idAlumno = jComboListaAlumno.getItemAt(jComboListaAlumno.getSelectedIndex()).getIdAlumno();
         if (filaS != -1) {
-            inscripData.borrarInscripcionMateriaAlumno(idAlumno, idMateria);
 
+            int idMateria = Integer.parseInt(jtablaMaterias.getValueAt(filaS, 0).toString());
+            int idAlumno = jComboListaAlumno.getItemAt(jComboListaAlumno.getSelectedIndex()).getIdAlumno();
+            int resp = JOptionPane.showConfirmDialog(this, "¿Estas seguro que deseas anular esta inscripción?", "",
+                    JOptionPane.YES_NO_OPTION, JOptionPane.PLAIN_MESSAGE);
+            if (resp == 0) {
+                inscripData.borrarInscripcionMateriaAlumno(idAlumno, idMateria);
+            }
             modelo.removeRow(filaS);
 
         } else {
@@ -298,8 +302,11 @@ public class InscripcionesView extends javax.swing.JInternalFrame {
             añoMateria = Integer.parseInt(jtablaMaterias.getValueAt(filaS, 2).toString());
             Materia materia = new Materia(idMateria, nombreMateria, añoMateria, true);
             Inscripcion inscrip = new Inscripcion(alumno, materia, 0.0);
-
-            inscripData.guardarInscripcion(inscrip);
+            int resp = JOptionPane.showConfirmDialog(this, "¿Estas seguro que deseas inscribirte a esta materia?", "",
+                    JOptionPane.YES_NO_OPTION, JOptionPane.PLAIN_MESSAGE);
+            if (resp == 0) {
+                inscripData.guardarInscripcion(inscrip);
+            }
             modelo.removeRow(filaS);
 
         } else {

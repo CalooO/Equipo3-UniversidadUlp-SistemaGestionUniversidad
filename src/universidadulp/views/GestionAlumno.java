@@ -16,8 +16,10 @@ import universidadulp.accesoADatos.AlumnoData;
  * @author Kaniory
  */
 public class GestionAlumno extends javax.swing.JInternalFrame {
+
     AlumnoData ad = new AlumnoData();
     int resp;
+
     /**
      * Creates new form GestionAlumno
      */
@@ -230,35 +232,35 @@ public class GestionAlumno extends javax.swing.JInternalFrame {
 
     private void jbBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbBuscarActionPerformed
         // TODO add your handling code here:
-        try{
-            if(!jtId.getText().isEmpty()){
+        try {
+            if (!jtId.getText().isEmpty()) {
                 Alumno alu = new Alumno();
                 alu = ad.buscarAlumnoPorId(Integer.parseInt(jtId.getText()));
-                if(alu.getNombre()!=null){
-                    jtDni.setText(alu.getDni()+"");
+                if (alu.getNombre() != null) {
+                    jtDni.setText(alu.getDni() + "");
                     jtApellido.setText(alu.getApellido());
                     jtNombre.setText(alu.getNombre());
                     jrbEstado.setSelected(alu.isActivo());
                     jdFecha.setDate(Date.from(alu.getFechaNacimiento().atStartOfDay().atZone(ZoneId.systemDefault()).toInstant()));
                 }
-            }else if(!jtDni.getText().isEmpty()){
+            } else if (!jtDni.getText().isEmpty()) {
                 Alumno alu = new Alumno();
                 alu = ad.buscarAlumnoPorDni(Integer.parseInt(jtDni.getText()));
-                if(alu.getNombre()!=null){
-                    jtId.setText(alu.getIdAlumno()+"");
+                if (alu.getNombre() != null) {
+                    jtId.setText(alu.getIdAlumno() + "");
                     jtApellido.setText(alu.getApellido());
                     jtNombre.setText(alu.getNombre());
                     jrbEstado.setSelected(alu.isActivo());
                     jdFecha.setDate(Date.from(alu.getFechaNacimiento().atStartOfDay().atZone(ZoneId.systemDefault()).toInstant()));
                 }
-            }else{
+            } else {
                 JOptionPane.showMessageDialog(this, "El campo dni y Id estan vacios, por favor llenar uno para buscar", "ADVERTENCIA", JOptionPane.WARNING_MESSAGE);
             }
-        }catch(NumberFormatException e){
+        } catch (NumberFormatException e) {
             JOptionPane.showMessageDialog(this, "El campo dni debe ser de formato numerico", "ADVERTENCIA", JOptionPane.WARNING_MESSAGE);
             jtDni.setText("");
-        }catch(NullPointerException e){
-            
+        } catch (NullPointerException e) {
+
         }
     }//GEN-LAST:event_jbBuscarActionPerformed
 
@@ -269,33 +271,33 @@ public class GestionAlumno extends javax.swing.JInternalFrame {
 
     private void jbEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbEliminarActionPerformed
         // TODO add your handling code here:
-        try{
-            if(!jtId.getText().isEmpty()){
+        try {
+            if (!jtId.getText().isEmpty()) {
                 Alumno alu = new Alumno();
                 alu = ad.buscarAlumnoPorId(Integer.parseInt(jtId.getText()));
-                if(alu.getNombre()!=null){
-                    resp = JOptionPane.showConfirmDialog(this, "¿Estas seguro que deseas eliminar el alumno?", "", 
-                         JOptionPane.YES_NO_OPTION, JOptionPane.PLAIN_MESSAGE);
-                if(resp==0){
-                    jrbEstado.setSelected(false);
-                    ad.elimarAlumno(alu.getDni());
+                if (alu.getNombre() != null) {
+                    resp = JOptionPane.showConfirmDialog(this, "¿Estas seguro que deseas eliminar el alumno?", "",
+                            JOptionPane.YES_NO_OPTION, JOptionPane.PLAIN_MESSAGE);
+                    if (resp == 0) {
+                        jrbEstado.setSelected(false);
+                        ad.elimarAlumno(alu.getDni());
+                    }
                 }
+            } else {
+                if (!jtDni.getText().isEmpty()) {
+                    // Mensaje para confirmar 
+                    resp = JOptionPane.showConfirmDialog(this, "¿Estas seguro que deseas eliminar el alumno?", "",
+                            JOptionPane.YES_NO_OPTION, JOptionPane.PLAIN_MESSAGE);
+                    if (resp == 0) {
+                        jrbEstado.setSelected(false);
+                        ad.elimarAlumno(Integer.parseInt(jtDni.getText()));
+                    }
+                } else {
+                    JOptionPane.showConfirmDialog(this, "El campo dni/id esta vacio", "ADVERTENCIA", JOptionPane.WARNING_MESSAGE);
                 }
-            }else{
-                if(!jtDni.getText().isEmpty()){
-                // Mensaje para confirmar 
-                 resp = JOptionPane.showConfirmDialog(this, "¿Estas seguro que deseas eliminar el alumno?", "", 
-                         JOptionPane.YES_NO_OPTION, JOptionPane.PLAIN_MESSAGE);
-                if(resp==0){
-                    jrbEstado.setSelected(false);
-                    ad.elimarAlumno(Integer.parseInt(jtDni.getText()));
-                }
-            }else{
-                JOptionPane.showConfirmDialog(this, "El campo dni/id esta vacio", "ADVERTENCIA", JOptionPane.WARNING_MESSAGE);
             }
-            }
-            
-        }catch(NumberFormatException e){
+
+        } catch (NumberFormatException e) {
             JOptionPane.showMessageDialog(this, "El campo dni debe ser de formato numerico", "ADVERTENCIA", JOptionPane.WARNING_MESSAGE);
         }
     }//GEN-LAST:event_jbEliminarActionPerformed
@@ -304,45 +306,45 @@ public class GestionAlumno extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
         boolean est;
         LocalDate fecha = null;
-        try{
-            if(jtId.getText().isEmpty()){
-            if(!jtDni.getText().isEmpty() || !jtApellido.getText().isEmpty() || !jtNombre.getText().isEmpty() ||
-                jdFecha.getDate()!=null && jtId.getText().isEmpty()){
-                int dni = Integer.parseInt(jtDni.getText());
-                String ape = jtApellido.getText();
-                String nom = jtNombre.getText();
-                if(jrbEstado.isSelected()){
-                    est = true;
-                }else{
-                    est = false;
-                }
-                if(jdFecha.getDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDate().isBefore(LocalDate.now())){
-                    fecha = jdFecha.getDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
-                }
-                Alumno alu = new Alumno(dni, ape, nom, fecha, est);
-                if(ad.buscarDni(dni)==null){
-                    ad.guardarAlumno(alu);
-                }else{
-                    resp = JOptionPane.showConfirmDialog(this, "¿Estas seguro que deseas modificar el alumno?", "", 
-                         JOptionPane.YES_NO_OPTION, JOptionPane.PLAIN_MESSAGE);
-                    if(resp==0){
-                    ad.modificarAlumno(alu);
+        try {
+            if (jtId.getText().isEmpty()) {
+                if (!jtDni.getText().isEmpty() || !jtApellido.getText().isEmpty() || !jtNombre.getText().isEmpty()
+                        || jdFecha.getDate() != null && jtId.getText().isEmpty()) {
+                    int dni = Integer.parseInt(jtDni.getText());
+                    String ape = jtApellido.getText();
+                    String nom = jtNombre.getText();
+                    if (jrbEstado.isSelected()) {
+                        est = true;
+                    } else {
+                        est = false;
                     }
-                }
-            }else{
+                    if (jdFecha.getDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDate().isBefore(LocalDate.now())) {
+                        fecha = jdFecha.getDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+                    }
+                    Alumno alu = new Alumno(dni, ape, nom, fecha, est);
+                    if (ad.buscarDni(dni) == null) {
+                        ad.guardarAlumno(alu);
+                    } else {
+                        resp = JOptionPane.showConfirmDialog(this, "¿Estas seguro que deseas modificar el alumno?", "",
+                                JOptionPane.YES_NO_OPTION, JOptionPane.PLAIN_MESSAGE);
+                        if (resp == 0) {
+                            ad.modificarAlumno(alu);
+                        }
+                    }
+                } else {
                     JOptionPane.showMessageDialog(this, "Quedan campos vacios, llene todos excepto el Id", "ADVERTENCIA", JOptionPane.WARNING_MESSAGE);
                 }
-                
-            }else{
+
+            } else {
                 JOptionPane.showMessageDialog(this, "El id se genera automaticamente", "ADVERTENCIA", JOptionPane.WARNING_MESSAGE);
-                    jtId.setText("");
+                jtId.setText("");
             }
-        }catch(NumberFormatException e){
-            if(!jtDni.getText().isEmpty()){
+        } catch (NumberFormatException e) {
+            if (!jtDni.getText().isEmpty()) {
                 JOptionPane.showMessageDialog(this, "El campo dni debe ser de formato numerico y sin puntos", "ADVERTENCIA", JOptionPane.WARNING_MESSAGE);
                 jtDni.setText("");
             }
-        }catch(NullPointerException e){
+        } catch (NullPointerException e) {
             JOptionPane.showMessageDialog(this, "El campo fecha es incorrecto, elija una fecha desde el boton del calendario", "ADVERTENCIA", JOptionPane.WARNING_MESSAGE);
             jdFecha.setDate(null);
         }

@@ -76,7 +76,7 @@ public class ActualizacionesNotas extends javax.swing.JInternalFrame {
         String aux = datosFila[0].toString();
         String aux2 = datosFila[2].toString();
         
-        double nota = Integer.parseInt(aux2);
+        double nota = Double.parseDouble(aux2);
         int idAlumno = jtComboBoxAct.getItemAt(jtComboBoxAct.getSelectedIndex()).getIdAlumno();
         int idMateria = Integer.parseInt(aux);
        
