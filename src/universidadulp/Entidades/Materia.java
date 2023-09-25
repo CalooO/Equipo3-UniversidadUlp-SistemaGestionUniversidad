@@ -58,7 +58,21 @@ public class Materia {
 
     @Override
     public String toString() {
-        return nombre + " de " +  anioMateria + " año, con id:"+ idMateria;
+        String terminacion=null;
+        if (anioMateria==1 || anioMateria==3){
+            terminacion="ro";
+        } else if (anioMateria==2 ){
+            terminacion="do";
+        } else if (anioMateria==4 || anioMateria==5 ||anioMateria==6){
+            terminacion="to";
+        }else if (anioMateria==7 || anioMateria==0){
+            terminacion="mo";
+        }else if (anioMateria==8){
+            terminacion="vo";
+        }else if (anioMateria==9){
+            terminacion="no";
+        }
+        return nombre + " de " +  anioMateria+terminacion + " año, con id: "+ idMateria;
     }
     
     
