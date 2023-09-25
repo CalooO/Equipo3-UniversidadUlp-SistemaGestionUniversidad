@@ -312,8 +312,8 @@ public class GestionAlumno extends javax.swing.JInternalFrame {
             LocalDate fecha = null;
             try{
                 if (jtId.getText().isEmpty()) {
-                    if (!jtDni.getText().isEmpty() || !jtApellido.getText().isEmpty() || !jtNombre.getText().isEmpty()
-                            || jdFecha.getDate() != null) {
+                    if (!jtDni.getText().isEmpty() && !jtApellido.getText().isEmpty() && !jtNombre.getText().isEmpty()
+                            && jdFecha.getDate() != null) {
                         int dni = Integer.parseInt(jtDni.getText());
                         String ape = jtApellido.getText();
                         String nom = jtNombre.getText();
