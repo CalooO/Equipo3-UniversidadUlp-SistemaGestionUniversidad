@@ -81,16 +81,22 @@ public class ActualizacionesNotas extends javax.swing.JInternalFrame {
         int idMateria = Integer.parseInt(aux);
        
         
-        if(nota > 10 || nota < 0){
-            JOptionPane.showMessageDialog(null, "Ingrese una nota valida");
-        } else {
+        if(nota < 10 && nota > 0){
             InscripcionData insc = new InscripcionData();
-        insc.actualizarNota(idAlumno, idMateria, nota);
+            insc.actualizarNota(idAlumno, idMateria, nota);
+        } else {
+            JOptionPane.showMessageDialog(null, "Ingrese una nota valida");
         }
+        
+        
+        
         } catch(java.lang.ArrayIndexOutOfBoundsException e){
-            JOptionPane.showMessageDialog(null, "Seleccione una fila");
+            if(jtTableIns.getSelectedRow() == -1){
+                JOptionPane.showMessageDialog(null, "Seleccione una fila");
+            }
+            
         } catch(java.lang.NumberFormatException e){
-            JOptionPane.showMessageDialog(null, "Presione enter para ingresar la nota");
+            JOptionPane.showMessageDialog(null, "Ingrese una nota valida.");
         }
         
             
