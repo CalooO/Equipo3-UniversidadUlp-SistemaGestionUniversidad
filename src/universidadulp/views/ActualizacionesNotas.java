@@ -85,7 +85,7 @@ public class ActualizacionesNotas extends javax.swing.JInternalFrame {
             InscripcionData insc = new InscripcionData();
             insc.actualizarNota(idAlumno, idMateria, nota);
         } else {
-            JOptionPane.showMessageDialog(null, "Ingrese una nota valida");
+            JOptionPane.showMessageDialog(null, "Ingrese una nota entre el 1 y el 10");
         }
         
         
